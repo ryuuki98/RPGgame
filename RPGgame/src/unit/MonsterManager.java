@@ -19,6 +19,7 @@ public class MonsterManager {
 			if(obj instanceof Monster) {
 				Monster monster = (Monster) obj;
 				monster.setHp(ran.nextInt(200)+100);
+				monster.setMax_hp(monster.getHp());
 				monsters.add(monster);
 			}
 		} catch (Exception e) {
