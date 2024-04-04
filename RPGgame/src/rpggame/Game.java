@@ -8,17 +8,20 @@ public class Game {
 	private final int END_SYSTEM = 0;
 
 	private Scanner scanner;
-	private PlayerManager playerManager;
+	private UserManager userManager;
 	
 	private boolean isRun;
 	private final String title = "======RPG GAME======";
-	private int log;
+	private static int log;
 	
 	public Game() {
-		playerManager = new PlayerManager();
+		userManager = new UserManager();
 		isRun = true;
 		scanner = new Scanner(System.in);
 		log = -1;
+	}
+	public static void setLog(int log) {
+		Game.log = log;
 	}
 	
 	public void run() {
@@ -32,7 +35,9 @@ public class Game {
 
 	private void runMenu(int select) {
 		if (select == JOIN) {
+			userManager.join();
 		}else if (select == LOGIN) {
+			userManager.login();
 		}else if (select == END_SYSTEM) {
 			isRun = false;
 		}
