@@ -8,10 +8,8 @@ public abstract class Unit {
 	private boolean isBuffOn;
 	private boolean isDebuffOn;
 	
-	public Unit(String job, int hp) {
+	public Unit(String job) {
 		this.job = job;
-		this.hp = hp;
-		this.max_hp = hp;
 	}
 	
 	public String getJob() {
