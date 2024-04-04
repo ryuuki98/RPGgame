@@ -27,12 +27,19 @@ public class Game {
 	public void run() {
 		while (isRun) {
 			
-			printMenu();
-			int select = inputNumber("menu");
-			runMenu(select);
+			if (!isLogin()) {
+				printMenu();
+				int select = inputNumber("menu");
+				runMenu(select);
+			}else {
+				
+			}
 		}
 	}
 
+	private boolean isLogin() {
+		return log == -1 ? false : true;
+	}
 	private void runMenu(int select) {
 		if (select == JOIN) {
 			userManager.join();
