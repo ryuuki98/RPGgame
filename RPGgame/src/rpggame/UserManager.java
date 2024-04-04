@@ -3,9 +3,18 @@ package rpggame;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import unit.Player;
+
 
 public class UserManager {
+	private final int WARRIOR = 0;
+	private final int MAGICIAN = 1;
+	private final int HEALER = 2;
+
+	private Scanner scanner = new Scanner(System.in);
+	
 	private ArrayList<User> users;
+	private String[] jobList = {"전사","법사","치료사"};
 	
 	public UserManager() {
 		users = new ArrayList<User>();
@@ -16,7 +25,8 @@ public class UserManager {
 		int index = findIndexById(id);
 		if (index == -1) {
 			String password = inputString("password");
-			User user = new User(id,password);
+			Player player = chooseJob();
+			User user = new User(id,password,player);
 			users.add(user);
 			System.out.println("회원가입이 완료 되었습니다.");
 		}else {
@@ -24,6 +34,39 @@ public class UserManager {
 		}
 	}
 
+	private Player chooseJob() {
+		System.out.println("======[CLASS LIST]======");
+		Player player = null;
+		for (int i = 0; i < jobList.length; i++) {
+			System.out.println(i + ") " +jobList[i]);
+		}
+		int index = inputNumber("직업을 선택하세요");
+		if (index<0 ||index >= jobList.length) {
+			return chooseJob();
+		}
+		
+		if (index == WARRIOR) {
+			 
+		}else if (index == MAGICIAN) {
+			
+		}else if (index == HEALER) {
+			
+		}
+		return player;
+	}
+
+	private int inputNumber(String message) {
+		int number = -1;
+		System.out.println(message + " : ");
+		try {
+			String numberString = scanner.next();
+			number = Integer.parseInt(numberString);
+		} catch (Exception e) {
+			System.out.println("숫자를 입력하세요");
+			return inputNumber(message);
+		}
+		return number;
+	}
 	private int findIndexById(String id) {
 		int index = -1;
 		for (int i = 0; i < users.size(); i++) {

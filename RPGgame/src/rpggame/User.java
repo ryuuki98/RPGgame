@@ -8,9 +8,11 @@ public class User {
 	private Player player;
 	private String guildName;
 	
-	public User(String id, String password) {
+	public User(String id, String password , Player player) {
 		this.id = id;
 		this.password = password;
+		this.player = player;
+		this.guildName = "";
 	}
 
 	public String getId() {
