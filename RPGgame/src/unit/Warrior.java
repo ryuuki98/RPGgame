@@ -2,8 +2,8 @@ package unit;
 
 public class Warrior extends Player{
 
-	public Warrior(String job, int hp) {
-		super(job, hp);
+	public Warrior() {
+		super("전사", 1000);
 	}
 
 	@Override
