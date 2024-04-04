@@ -30,6 +30,10 @@ public abstract class Unit {
 		return max_hp;
 	}
 	
+	public void setMax_hp(int max_hp) {
+		this.max_hp = max_hp;
+	}
+	
 	public boolean isShieldOn() {
 		return isShieldOn;
 	}
