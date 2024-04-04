@@ -1,9 +1,9 @@
 package unit;
 
-public class Healer extends Player{
+public class Warrior extends Player{
 
-	public Healer() {
-		super("힐러", 500);
+	public Warrior(String job, int hp) {
+		super(job, hp);
 	}
 
 	@Override
@@ -15,5 +15,5 @@ public class Healer extends Player{
 	public void attack(Unit unit) {
 		
 	}
-
+	
 }

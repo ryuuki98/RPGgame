@@ -1,9 +1,9 @@
 package unit;
 
-public class Healer extends Player{
+public class Wizard extends Player{
 
-	public Healer() {
-		super("힐러", 500);
+	public Wizard(String job, int hp) {
+		super(job, hp);
 	}
 
 	@Override
