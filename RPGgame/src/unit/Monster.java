@@ -2,8 +2,8 @@ package unit;
 
 public abstract class Monster extends Unit{
 
-	public Monster(String job, int hp) {
-		super(job, hp);
+	public Monster(String job) {
+		super(job);
 	}
 	
 	@Override
