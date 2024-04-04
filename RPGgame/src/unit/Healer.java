@@ -3,7 +3,7 @@ package unit;
 public class Healer extends Player{
 
 	public Healer() {
-		super("힐러", 500);
+		super("치료사", 500);
 	}
 
 	@Override
