@@ -6,6 +6,7 @@ public class Game {
 	private final int JOIN = 1;
 	private final int LOGIN = 2;
 	private final int END_SYSTEM = 0;
+	private final int LOGOUT = 4;
 
 	private Scanner scanner;
 	private UserManager userManager;
@@ -32,9 +33,33 @@ public class Game {
 				int select = inputNumber("menu");
 				runMenu(select);
 			}else {
-				
+				printSubMenu();
+				int select = inputNumber("menu");
+				if(select == LOGOUT) {
+					log = -1;
+				}else {
+					runStage(select);
+				}
 			}
 		}
+	}
+	
+	private final int BATTLE = 1;
+	private final int GUILD = 2;
+	private final int SHOP = 3;
+	
+	private void runStage(int select) {
+		if(select == BATTLE) {
+			
+		}else if(select == GUILD) {
+			
+		}else if(select == SHOP) {
+			
+		}
+	}
+	
+	private void printSubMenu() {
+		System.out.println("[1]배틀 [2]길드 [3]상점 [4]로그아웃");
 	}
 
 	private boolean isLogin() {
