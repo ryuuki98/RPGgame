@@ -3,6 +3,8 @@ package rpggame;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import unit.Player;
+
 public class PlayerManager {
 	private ArrayList<Player> players;
 	
@@ -11,11 +13,7 @@ public class PlayerManager {
 	}
 
 	public void join() {
-		String id = inputString("id");
-		int index = findIndexById(id);
-		if (index == -1) {
-			String password = inputString("password");
-		}
+	
 	}
 
 	private String inputString(String message) {
