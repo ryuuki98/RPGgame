@@ -2,8 +2,8 @@ package unit;
 
 public class Wizard extends Player{
 
-	public Wizard(String job, int hp) {
-		super(job, hp);
+	public Wizard() {
+		super("마법사", 800);
 	}
 
 	@Override
