@@ -6,4 +6,6 @@ public abstract class Player extends Unit{
 		super(job, hp);
 	}
 	
+	abstract public void Skill(Unit unit);
+	
 }
