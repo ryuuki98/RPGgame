@@ -8,12 +8,14 @@ public class Game {
 	private final int END_SYSTEM = 0;
 
 	private Scanner scanner;
+	private PlayerManager playerManager;
 	
 	private boolean isRun;
 	private final String title = "======RPG GAME======";
 	private int log;
 	
 	public Game() {
+		playerManager = new PlayerManager();
 		isRun = true;
 		scanner = new Scanner(System.in);
 		log = -1;
