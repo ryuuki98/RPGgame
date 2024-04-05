@@ -34,4 +34,9 @@ public class User {
 	public void setGuildName(String guildName) {
 		this.guildName = guildName;
 	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return String.format("%s %s" + this.player, this.id,this.guildName);
+	}
 }

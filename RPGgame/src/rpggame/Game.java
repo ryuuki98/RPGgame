@@ -27,7 +27,7 @@ public class Game {
 	private static int log;
 	
 	public Game() {
-		userManager = UserManager.getUserManager();
+		userManager = UserManager.getInstance();
 		guildManager = new GuildManager(userManager);
 		isRun = true;
 		scanner = new Scanner(System.in);
@@ -80,10 +80,17 @@ public class Game {
 	
 	private void printSubMenu() {
 		System.out.println(title);
+		printUsersState();
 		System.out.println("현재 로그인 : " + userManager.getUsers().get(log).getId());
 		System.out.println("[1]배틀 [2]길드 [3]상점 [4]로그아웃");
 	}
 
+	private void printUsersState() {
+		ArrayList<User>users = userManager.getUsers();
+		for (int i = 0; i < users.size(); i++) {
+			System.out.println(users.get(i));
+		}
+	}
 	private boolean isLogin() {
 		return log == -1 ? false : true;
 	}

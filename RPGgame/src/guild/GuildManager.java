@@ -13,8 +13,8 @@ public class GuildManager {
 	private final int JOIN_GUILD = 2;
 	private final int LEAVE_GUILD = 3;
 	private HashMap<String, ArrayList<User>> guildList = new HashMap<String, ArrayList<User>>();
-	private ArrayList<User> users = UserManager.getUserManager().getUsers();
-	private int log = Game.getLog();
+	private ArrayList<User> users = UserManager.getInstance().getUsers();
+	private int log;
 	private String key;
 
 	public GuildManager(UserManager userManager) {
@@ -165,6 +165,7 @@ public class GuildManager {
 	}
 
 	public void run() {
+		log = Game.getLog();
 		printGuildMenu();
 		int select = inputIndex(1, 3);
 		runGuildMenu(select);
@@ -182,8 +183,7 @@ public class GuildManager {
 
 	private void printGuildMenu() {
 		System.out.println("======GUILD======");
-		System.out.println(
-				"현재 가입중인 길드 : " + (users.get(log).getGuildName().equals("") ? "없음" : users.get(log).getGuildName()));
+		System.out.println("현재 가입중인 길드 : " + (users.get(log).getGuildName().equals("") ? "없음" : users.get(log).getGuildName()));
 		System.out.println("1.길드 생성");
 		System.out.println("2.길드 가입");
 		System.out.println("3.길드 탈퇴");

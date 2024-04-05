@@ -11,7 +11,8 @@ import unit.Wizard;
 
 public class UserManager {
 	
-	private static UserManager userManager = new UserManager();
+	private static UserManager instance = new UserManager();
+	
 	private final int WARRIOR = 0;
 	private final int MAGICIAN = 1;
 	private final int HEALER = 2;
@@ -26,11 +27,6 @@ public class UserManager {
 		
 	}
 	
-	public static UserManager getUserManager() {
-		return userManager;
-	}
-	
-	private static UserManager instance = new UserManager();
 	
 	public static UserManager getInstance() {
 		return instance;
