@@ -44,18 +44,8 @@ public class Game {
 		}
 	}
 	
-	private final int BATTLE = 1;
-	private final int GUILD = 2;
-	private final int SHOP = 3;
-	
 	private void runStage(int select) {
-		if(select == BATTLE) {
-			
-		}else if(select == GUILD) {
-			
-		}else if(select == SHOP) {
-			
-		}
+		
 	}
 	
 	private void printSubMenu() {
