@@ -22,4 +22,16 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public String getGuildName() {
+		return guildName;
+	}
+
+	public void setGuildName(String guildName) {
+		this.guildName = guildName;
+	}
 }
