@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import guild.GuildManager;
 import rpggame.Game;
 import rpggame.User;
 import rpggame.UserManager;
@@ -16,10 +17,14 @@ public class Normal extends Battle{
 	private ArrayList<Monster> monsters;
 	private ArrayList<Player> players;
 	private MonsterManager monsterManager;
+	private UserManager userManager;
+	private GuildManager guildManager;
 	
-	public Normal() {
+	public Normal(UserManager userManager, GuildManager guildManager) {
 		monsters = null;
 		monsterManager = new MonsterManager();
+		this.userManager = userManager;
+		this.guildManager = guildManager;
 	}
 	
 	@Override
@@ -32,7 +37,7 @@ public class Normal extends Battle{
 		// 여기서 길드원들 데려와야하는데....
 		players = null;
 		HashMap<String, ArrayList<User>> guildList = guildManager.getGuildList();
-		ArrayList<User> user = UserManager.getUsers();
+		ArrayList<User> user = userManager.getUsers();
 		User loguser = user.get(Game.getLog());
 		String key = loguser.getGuildName();
 		ArrayList<User> users = guildList.get(key);

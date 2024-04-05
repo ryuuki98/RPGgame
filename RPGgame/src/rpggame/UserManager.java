@@ -3,24 +3,40 @@ package rpggame;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import unit.Healer;
 import unit.Player;
+import unit.Warrior;
+import unit.Wizard;
 
 
 public class UserManager {
+	
+	private static UserManager userManager = new UserManager();
 	private final int WARRIOR = 0;
 	private final int MAGICIAN = 1;
 	private final int HEALER = 2;
 
 	private Scanner scanner = new Scanner(System.in);
 	
-	private static ArrayList<User> users;
+	private ArrayList<User> users = new ArrayList<User>();
+;
 	private String[] jobList = {"전사","법사","치료사"};
 	
-	public UserManager() {
-		users = new ArrayList<User>();
+	private UserManager() {
+		
 	}
 	
-	public static ArrayList<User> getUsers() {
+	public static UserManager getUserManager() {
+		return userManager;
+	}
+	
+	private static UserManager instance = new UserManager();
+	
+	public static UserManager getInstance() {
+		return instance;
+	}
+	
+	public ArrayList<User> getUsers() {
 		return users;
 	}
 
@@ -50,11 +66,11 @@ public class UserManager {
 		}
 		
 		if (index == WARRIOR) {
-			 
+			player = new Warrior();
 		}else if (index == MAGICIAN) {
-			
+			player = new Wizard();
 		}else if (index == HEALER) {
-			
+			player = new Healer();
 		}
 		return player;
 	}
