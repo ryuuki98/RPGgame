@@ -184,7 +184,8 @@ public class GuildManager {
 
 	private void printGuildMenu() {
 		System.out.println("======GUILD======");
-		System.out.println("현재 가입중인 길드 : " + (users.get(log).getGuildName().equals("") ? "없음" : users.get(log).getGuildName()));
+		System.out.println(
+				"현재 가입중인 길드 : " + (users.get(log).getGuildName().equals("") ? "없음" : users.get(log).getGuildName()));
 		System.out.println("1.길드 생성");
 		System.out.println("2.길드 가입");
 		System.out.println("3.길드 탈퇴");
