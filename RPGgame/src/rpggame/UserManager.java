@@ -7,17 +7,23 @@ import unit.Player;
 
 
 public class UserManager {
+	
+	private static UserManager userManager = new UserManager();
 	private final int WARRIOR = 0;
 	private final int MAGICIAN = 1;
 	private final int HEALER = 2;
 
 	private Scanner scanner = new Scanner(System.in);
 	
-	private ArrayList<User> users;
+	private ArrayList<User> users = new ArrayList<User>();
+;
 	private String[] jobList = {"전사","법사","치료사"};
 	
-	public UserManager() {
-		users = new ArrayList<User>();
+	private UserManager() {
+	}
+	
+	public static UserManager getUserManager() {
+		return userManager;
 	}
 	
 	public ArrayList<User> getUsers() {
