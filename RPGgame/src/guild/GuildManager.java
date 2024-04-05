@@ -165,6 +165,7 @@ public class GuildManager {
 	}
 
 	public void run() {
+		log = Game.getLog();
 		printGuildMenu();
 		int select = inputIndex(1, 3);
 		runGuildMenu(select);
