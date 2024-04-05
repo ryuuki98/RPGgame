@@ -14,5 +14,5 @@ public abstract class Player extends Unit{
 	}
 	
 	abstract public void Skill(Unit unit);
-
+	
 }

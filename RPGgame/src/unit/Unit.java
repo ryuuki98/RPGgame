@@ -10,6 +10,12 @@ public abstract class Unit {
 	private boolean isBuffOn;
 	private boolean isDebuffOn;
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return String.format("[%s] HP[%d/%d] POWER[%d]",this.job, this.hp,this.max_hp,this.power);
+	}
+	
 	public Unit(String job) {
 		this.job = job;
 	}
