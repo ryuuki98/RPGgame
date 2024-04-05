@@ -23,6 +23,10 @@ public class User {
 		this.guildName = guildName;
 	}
 	
+	public String getGuildName() {
+		return guildName;
+	}
+	
 	public String getPassword() {
 		return password;
 	}
