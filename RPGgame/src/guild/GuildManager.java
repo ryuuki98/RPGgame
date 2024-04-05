@@ -9,6 +9,9 @@ import rpggame.User;
 import rpggame.UserManager;
 
 public class GuildManager {
+	private final int CREATE_GUILD = 1;
+	private final int JOIN_GUILD = 2;
+	private final int LEAVE_GUILD = 3;
 	private static HashMap<String, ArrayList<User>> guildList;
 	private ArrayList<User> users = UserManager.getUsers();
 	private int log = Game.getLog();
@@ -161,5 +164,29 @@ public class GuildManager {
 	private String inputString(String message) {
 		System.out.println(message + " : ");
 		return new Scanner(System.in).next();
+	}
+
+	public void run() {
+		printGuildMenu();
+		int select = inputIndex(1, 3);
+		runGuildMenu(select);
+	}
+
+	private void runGuildMenu(int select) {
+		if (select == CREATE_GUILD) {
+			createGuild();
+		} else if (select == JOIN_GUILD) {
+			joinGuildMenu();
+		} else if (select == LEAVE_GUILD) {
+			leaveGuild();
+		}
+	}
+
+	private void printGuildMenu() {
+		System.out.println("======GUILD======");
+		System.out.println("현재 가입중인 길드 : " + (users.get(log).getGuildName().equals("") ? "없음" : users.get(log).getGuildName()));
+		System.out.println("1.길드 생성");
+		System.out.println("2.길드 가입");
+		System.out.println("3.길드 탈퇴");
 	}
 }
