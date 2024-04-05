@@ -3,7 +3,10 @@ package rpggame;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import unit.Healer;
 import unit.Player;
+import unit.Warrior;
+import unit.Wizard;
 
 
 public class UserManager {
@@ -63,11 +66,11 @@ public class UserManager {
 		}
 		
 		if (index == WARRIOR) {
-			 
+			player = new Warrior();
 		}else if (index == MAGICIAN) {
-			
+			player = new Wizard();
 		}else if (index == HEALER) {
-			
+			player = new Healer();
 		}
 		return player;
 	}
