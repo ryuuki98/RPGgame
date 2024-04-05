@@ -19,6 +19,10 @@ public class UserManager {
 	public UserManager() {
 		users = new ArrayList<User>();
 	}
+	
+	public static ArrayList<User> getUsers() {
+		return users;
+	}
 
 	public void join() {
 		String id = inputString("id");
