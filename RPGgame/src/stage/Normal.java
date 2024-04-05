@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import guild.GuildManager;
+import item.Item;
 import rpggame.Game;
 import rpggame.User;
 import rpggame.UserManager;
@@ -63,8 +64,14 @@ public class Normal extends Battle{
 		}
 	}
 	
-	private void runUseItem() {
-		
+	private void printItemList(Player player) {
+		for(Item item : player.getItems()) {
+			
+		}
+	}
+	
+	private void runUseItem(Player player) {
+		printItemList(player);
 	}
 	
 	private void playerAttack(int idx) {
@@ -73,7 +80,7 @@ public class Normal extends Battle{
 			System.out.println("[1]어택 [2]스킬 [3]아이템사용");
 			int select = inputNumber();
 			if(select == 3) {
-				runUseItem();
+				runUseItem(player);
 				continue;
 			}else if(select == 1) {
 				
