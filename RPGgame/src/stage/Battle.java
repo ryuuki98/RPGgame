@@ -6,7 +6,6 @@ import guild.GuildManager;
 
 public abstract class Battle {
 	public Scanner sc = new Scanner(System.in);
-	public GuildManager guildManager = new GuildManager();
 	
 	public int inputNumber() {
 		while(true) {

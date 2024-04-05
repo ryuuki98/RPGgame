@@ -28,7 +28,7 @@ public class Game {
 	
 	public Game() {
 		userManager = new UserManager();
-		guildManager = new GuildManager();
+		guildManager = new GuildManager(userManager);
 		isRun = true;
 		scanner = new Scanner(System.in);
 		stages = new ArrayList<>();
