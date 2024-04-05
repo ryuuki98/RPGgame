@@ -18,11 +18,16 @@ public class GuildManager {
 	}
 
 	private void createGuild() {
+		// 현재 로그인한 유저
+		User user = users.get(log);
+		if (!user.getGuildName().equals("")) {
+			System.out.println("길드가 있으신 경우 길드를 새로 만드실 수 없습니다.");
+			return;
+		}
+
 		String guildName = inputString("Guild name");
 		// 길드명이 중복되지 않는경우
 		if (!isDupilcated(guildName)) {
-			// 현재 로그인한 유저
-			User user = users.get(log);
 
 			// 해당 유저 정보에 길드명 저장
 			user.setGuildName(guildName);
