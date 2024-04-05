@@ -3,6 +3,7 @@ package rpggame;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import guild.GuildManager;
 import stage.StageManager;
 
 public class Game {
@@ -17,6 +18,7 @@ public class Game {
 
 	private Scanner scanner;
 	private UserManager userManager;
+	private GuildManager guildManager;
 	
 	private ArrayList<StageManager> stages;
 	
@@ -26,6 +28,7 @@ public class Game {
 	
 	public Game() {
 		userManager = new UserManager();
+		guildManager = new GuildManager();
 		isRun = true;
 		scanner = new Scanner(System.in);
 		stages = new ArrayList<>();
@@ -69,13 +72,15 @@ public class Game {
 		if(select == BATTLE) {
 			
 		}else if(select == GUILD) {
-			
+			guildManager.run();
 		}else if(select == SHOP) {
 			
 		}
 	}
 	
 	private void printSubMenu() {
+		System.out.println(title);
+		System.out.println("현재 로그인 : " + userManager.getUsers().get(log).getId());
 		System.out.println("[1]배틀 [2]길드 [3]상점 [4]로그아웃");
 	}
 
