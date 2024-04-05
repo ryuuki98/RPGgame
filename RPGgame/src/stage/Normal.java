@@ -32,8 +32,8 @@ public class Normal extends Battle{
 		monsters = monsterManager.monsters;
 		// 여기서 길드원들 데려와야하는데....
 		players = null;
-		HashMap<String, ArrayList<User>> map = GuildManager.guildList;
-		ArrayList<User> users = map.get("key");
+		HashMap<String, ArrayList<User>> guildList = guildManager.getGuildList();
+		ArrayList<User> users = guildList.get("key");
 		if(users!=null) {
 			// 길드 O
 			for(User user : users) {

@@ -9,12 +9,27 @@ import rpggame.User;
 import rpggame.UserManager;
 
 public class GuildManager {
-	public static HashMap<String, ArrayList<User>> guildList;
+	private static HashMap<String, ArrayList<User>> guildList;
 	private ArrayList<User> users = UserManager.getUsers();
 	private int log = Game.getLog();
+	private String key;
 
 	public GuildManager() {
 		guildList = new HashMap<String, ArrayList<User>>();
+		key = "";
+	}
+	
+	private void findMyGuild() {
+		key = users.get(log).getGuildName();
+	}
+	
+	public String getKey() {
+		findMyGuild();
+		return key;
+	}
+	
+	public HashMap<String,ArrayList<User>> getGuildList(){
+		return guildList;
 	}
 
 	private void createGuild() {
