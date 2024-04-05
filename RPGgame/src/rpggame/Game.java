@@ -2,11 +2,17 @@ package rpggame;
 
 import java.util.Scanner;
 
+import stage.Stage;
+
 public class Game {
 	private final int JOIN = 1;
 	private final int LOGIN = 2;
 	private final int END_SYSTEM = 0;
 	private final int LOGOUT = 4;
+
+	private final int BATTLE = 1;
+	private final int GUILD = 2;
+	private final int SHOP = 3;
 
 	private Scanner scanner;
 	private UserManager userManager;
@@ -26,12 +32,19 @@ public class Game {
 	}
 	
 	public void run() {
+//		Stage guildStage = new Guild();
+//		Stage shopStage = new Shop();
+		// 프로그램 시작할때 길드, 상점 생성
 		while (isRun) {
 			
 			if (!isLogin()) {
 				printMenu();
 				int select = inputNumber("menu");
 				runMenu(select);
+				if(isLogin()) {
+//					Stage BattleStage = new Battle();
+					// 로그인 할 때 배틀 스테이지 초기화
+				}
 			}else {
 				printSubMenu();
 				int select = inputNumber("menu");
@@ -44,8 +57,15 @@ public class Game {
 		}
 	}
 	
+	
 	private void runStage(int select) {
-		
+		if(select == BATTLE) {
+			
+		}else if(select == GUILD) {
+			
+		}else if(select == SHOP) {
+			
+		}
 	}
 	
 	private void printSubMenu() {
