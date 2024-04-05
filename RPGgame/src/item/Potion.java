@@ -15,5 +15,4 @@ public class Potion extends Item {
 			unit.setHp(unit.getHp() + 50);
 		}
 	}
-
 }
