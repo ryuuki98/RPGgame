@@ -18,17 +18,17 @@ public class GuildManager {
 		guildList = new HashMap<String, ArrayList<User>>();
 		key = "";
 	}
-	
+
 	private void findMyGuild() {
 		key = users.get(log).getGuildName();
 	}
-	
+
 	public String getKey() {
 		findMyGuild();
 		return key;
 	}
-	
-	public HashMap<String,ArrayList<User>> getGuildList(){
+
+	public HashMap<String, ArrayList<User>> getGuildList() {
 		return guildList;
 	}
 
@@ -57,6 +57,76 @@ public class GuildManager {
 			System.out.println("길드 생성이 완료 되었습니다.");
 		}
 	}
+	
+	private void joinGuildMenu() {
+	    // 현재 로그인한 유저
+	    User user = users.get(log);
+	    if (!user.getGuildName().equals("")) {
+	        // 이미 길드에 소속되어 있는지 확인
+	        System.out.println("이미 길드에 소속되어 있습니다.");
+	        return;
+	    }
+
+	    // 가입할 수 있는 길드 목록
+	    System.out.println("가입할 수 있는 길드 목록:");
+	    int index = 1;
+	    for (String guildName : guildList.keySet()) {
+	        System.out.println(index + ". " + guildName);
+	        index++;
+	    }
+
+	    // 사용자 선택 메뉴
+	    System.out.println("가입할 길드의 번호를 입력하세요:");
+	    int guildIndex = inputIndex(1, guildList.size());
+
+	    // 입력받은 인덱스에 해당하는 길드에 가입
+	    joinGuild(guildIndex);
+	}
+
+	private void joinGuild(int guildIndex) {
+	    // 현재 로그인한 유저
+	    User user = users.get(log);
+
+	    // 입력받은 인덱스에 해당하는 길드 찾기
+	    String guildName = getGuildNameByIndex(guildIndex);
+
+	    if (guildName != null) {
+	        // 해당 길드에 유저를 추가
+	        ArrayList<User> guildUsers = guildList.get(guildName);
+	        guildUsers.add(user);
+	        // 유저 정보에 길드명을 저장
+	        user.setGuildName(guildName);
+	        System.out.println("길드 가입이 완료되었습니다.");
+	    } else {
+	        System.out.println("올바른 번호를 입력하세요.");
+	    }
+	}
+	
+	private String getGuildNameByIndex(int index) {
+	    int count = 1;
+	    for (String guildName : guildList.keySet()) {
+	        if (count == index) {
+	            return guildName;
+	        }
+	        count++;
+	    }
+	    return null;
+	}
+
+
+	private int inputIndex(int minIndex, int maxIndex) {
+	    Scanner scanner = new Scanner(System.in);
+	    int index;
+	    do {
+	        while (!scanner.hasNextInt()) {
+	            System.out.println("올바른 번호를 입력하세요.");
+	            scanner.next();
+	        }
+	        index = scanner.nextInt();
+	    } while (index < minIndex || index > maxIndex);
+	    return index;
+	}
+
 
 	private boolean isDupilcated(String guildName) {
 
