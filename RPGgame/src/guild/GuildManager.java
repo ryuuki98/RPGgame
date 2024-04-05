@@ -19,7 +19,7 @@ public class GuildManager {
 
 	public GuildManager(UserManager userManager) {
 		guildList = new HashMap<String, ArrayList<User>>();
-		users = userManager.getUsers();
+		users = UserManager.getInstance().getUsers();
 		key = "";
 	}
 
@@ -51,7 +51,6 @@ public class GuildManager {
 
 			// 해당 유저 정보에 길드명 저장
 			user.setGuildName(guildName);
-
 			// 신생 길드의 유저리스트
 			ArrayList<User> temp = new ArrayList<User>();
 			// 본인 가입
@@ -99,9 +98,9 @@ public class GuildManager {
 		if (guildName != null) {
 			// 해당 길드에 유저를 추가
 			ArrayList<User> guildUsers = guildList.get(guildName);
+			user.setGuildName(guildName);
 			guildUsers.add(user);
 			// 유저 정보에 길드명을 저장
-			user.setGuildName(guildName);
 			System.out.println("길드 가입이 완료되었습니다.");
 		} else {
 			System.out.println("올바른 번호를 입력하세요.");

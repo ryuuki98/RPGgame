@@ -16,9 +16,17 @@ public class UserManager {
 	private ArrayList<User> users;
 	private String[] jobList = {"전사","법사","치료사"};
 	
-	public UserManager() {
+	private UserManager() {
 		users = new ArrayList<User>();
 	}
+	
+	private static UserManager instance = new UserManager();
+	
+	public static UserManager getInstance() {
+		return instance;
+	}
+	
+	UserManager userManager = UserManager.getInstance();
 	
 	public ArrayList<User> getUsers() {
 		return users;
