@@ -80,6 +80,7 @@ public class Game {
 	
 	private void printSubMenu() {
 		System.out.println(title);
+		System.out.println("현재 로그인 : " + userManager.getUsers().get(log).getId());
 		System.out.println("[1]배틀 [2]길드 [3]상점 [4]로그아웃");
 	}
 
