@@ -6,7 +6,7 @@ import java.util.HashMap;
 import rpggame.User;
 
 public class GuildManager {
-	private static HashMap<String, ArrayList<User>> guildList;
+	public static HashMap<String, ArrayList<User>> guildList;
 	
 	public GuildManager() {
 		guildList = new HashMap<String, ArrayList<User>>();
