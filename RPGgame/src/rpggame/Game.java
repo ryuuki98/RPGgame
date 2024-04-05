@@ -1,5 +1,6 @@
 package rpggame;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import stage.Stage;
@@ -17,6 +18,8 @@ public class Game {
 	private Scanner scanner;
 	private UserManager userManager;
 	
+	private ArrayList<Stage> stages;
+	
 	private boolean isRun;
 	private final String title = "======RPG GAME======";
 	private static int log;
@@ -25,6 +28,7 @@ public class Game {
 		userManager = new UserManager();
 		isRun = true;
 		scanner = new Scanner(System.in);
+		stages = new ArrayList<>();
 		log = -1;
 	}
 	public static void setLog(int log) {
