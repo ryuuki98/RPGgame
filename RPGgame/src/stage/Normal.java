@@ -65,8 +65,10 @@ public class Normal extends Battle{
 	}
 	
 	private void printItemList(Player player) {
+		ArrayList<String> itemList = new ArrayList<String>();
 		for(Item item : player.getItems()) {
-			
+//			String item = 
+//			itemList.add("")
 		}
 	}
 	
