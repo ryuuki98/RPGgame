@@ -32,16 +32,17 @@ public class Normal extends Battle{
 		// 여기서 길드원들 데려와야하는데....
 		players = null;
 		HashMap<String, ArrayList<User>> guildList = guildManager.getGuildList();
-		ArrayList<User> users = guildList.get("key");
+		ArrayList<User> user = UserManager.getUsers();
+		User loguser = user.get(Game.getLog());
+		String key = loguser.getGuildName();
+		ArrayList<User> users = guildList.get(key);
 		if(users!=null) {
 			// 길드 O
-			for(User user : users) {
-				players.add(user.getPlayer());
+			for(User guildUser : users) {
+				players.add(guildUser.getPlayer());
 			}			
 		}else {
 			// 솔플
-			ArrayList<User> user = UserManager.getUsers();
-			User loguser = user.get(Game.getLog());
 			players.add(loguser.getPlayer());
 		}
 	}
