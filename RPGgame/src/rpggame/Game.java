@@ -3,7 +3,7 @@ package rpggame;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import stage.Stage;
+import stage.StageManager;
 
 public class Game {
 	private final int JOIN = 1;
@@ -18,7 +18,7 @@ public class Game {
 	private Scanner scanner;
 	private UserManager userManager;
 	
-	private ArrayList<Stage> stages;
+	private ArrayList<StageManager> stages;
 	
 	private boolean isRun;
 	private final String title = "======RPG GAME======";
@@ -39,8 +39,8 @@ public class Game {
 	}
 	
 	public void run() {
-//		Stage guildStage = new Guild();
-//		Stage shopStage = new Shop();
+//		Guild guildStage = new Guild();
+//		Shop shopStage = new Shop();
 		// 프로그램 시작할때 길드, 상점 생성
 		while (isRun) {
 			

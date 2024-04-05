@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import guild.GuildManager;
 import rpggame.Game;
 import rpggame.User;
 import rpggame.UserManager;
@@ -31,7 +32,7 @@ public class Normal extends Battle{
 		monsters = monsterManager.monsters;
 		// 여기서 길드원들 데려와야하는데....
 		players = null;
-		HashMap<String, ArrayList<User>> map = gildManager.guildList;
+		HashMap<String, ArrayList<User>> map = GuildManager.guildList;
 		ArrayList<User> users = map.get("key");
 		if(users!=null) {
 			// 길드 O
