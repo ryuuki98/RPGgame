@@ -1,6 +1,6 @@
+package item;
 import java.util.ArrayList;
 
-import item.Item;
 import unit.Player;
 import unit.Unit;
 
