@@ -58,6 +58,25 @@ public class Normal extends Battle{
 		}
 	}
 	
+	private void playerAttack(int idx) {
+		
+	}
+	
+	private void monsterAttack(int index) {
+		Monster monster = monsters.get(index);
+		if(monster.getHp() <= 0) {
+			return;
+		}
+		while(true) {
+			int idx = ran.nextInt(players.size());
+			Player player = players.get(index);
+			if(player.getHp() > 0) {
+				monster.attack(player);
+				break;
+			}
+		}
+	}
+	
 	private boolean isGameOver() {
 		int cnt = 0;
 		for(Player player : players) {
@@ -71,7 +90,7 @@ public class Normal extends Battle{
 		return false;
 	}
 	
-	private boolean isGameClear() {
+	private boolean isStageClear() {
 		int cnt = 0;
 		for(Monster monster : monsters) {
 			if(monster.getHp() <= 0) {
@@ -87,14 +106,19 @@ public class Normal extends Battle{
 	@Override
 	public boolean update() {
 		while(true) {
-			
 			if(isGameOver()) {
-				// 길드원이 모두 죽으면 false
 				return false;
 			}
-			if(isGameClear()) {
-				// 몬스터가 모두 죽으면 true
-				return true;		
+			for(int i = 0; i<players.size(); i++) {
+				printInfo();
+				playerAttack(i);				
+				if(isStageClear()) {
+					return true;
+				}
+			}
+			System.out.println("====!!Monster Attack!!====");
+			for(int i = 0; i<monsters.size(); i++) {
+				monsterAttack(i);
 			}
 		}
 	}
