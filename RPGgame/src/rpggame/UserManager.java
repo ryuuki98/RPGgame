@@ -7,17 +7,24 @@ import unit.Player;
 
 
 public class UserManager {
+	
+	private static UserManager userManager = new UserManager();
 	private final int WARRIOR = 0;
 	private final int MAGICIAN = 1;
 	private final int HEALER = 2;
 
 	private Scanner scanner = new Scanner(System.in);
 	
-	private ArrayList<User> users;
+	private ArrayList<User> users = new ArrayList<User>();
+;
 	private String[] jobList = {"전사","법사","치료사"};
 	
 	private UserManager() {
-		users = new ArrayList<User>();
+		
+	}
+	
+	public static UserManager getUserManager() {
+		return userManager;
 	}
 	
 	private static UserManager instance = new UserManager();
@@ -25,8 +32,6 @@ public class UserManager {
 	public static UserManager getInstance() {
 		return instance;
 	}
-	
-	UserManager userManager = UserManager.getInstance();
 	
 	public ArrayList<User> getUsers() {
 		return users;

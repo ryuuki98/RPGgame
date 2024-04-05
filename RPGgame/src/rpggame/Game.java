@@ -27,7 +27,7 @@ public class Game {
 	private static int log;
 	
 	public Game() {
-		userManager = UserManager.getInstance();
+		userManager = UserManager.getUserManager();
 		guildManager = new GuildManager(userManager);
 		isRun = true;
 		scanner = new Scanner(System.in);
