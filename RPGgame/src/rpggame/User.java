@@ -19,6 +19,10 @@ public class User {
 		return id;
 	}
 	
+	public void setGuildName(String guildName) {
+		this.guildName = guildName;
+	}
+	
 	public String getPassword() {
 		return password;
 	}

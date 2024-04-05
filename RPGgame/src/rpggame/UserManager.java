@@ -13,11 +13,15 @@ public class UserManager {
 
 	private Scanner scanner = new Scanner(System.in);
 	
-	private ArrayList<User> users;
+	private static ArrayList<User> users;
 	private String[] jobList = {"전사","법사","치료사"};
 	
 	public UserManager() {
 		users = new ArrayList<User>();
+	}
+	
+	public static ArrayList<User> getUsers() {
+		return users;
 	}
 
 	public void join() {

@@ -34,6 +34,9 @@ public class Game {
 	public static void setLog(int log) {
 		Game.log = log;
 	}
+	public static int getLog() {
+		return log;
+	}
 	
 	public void run() {
 //		Stage guildStage = new Guild();
