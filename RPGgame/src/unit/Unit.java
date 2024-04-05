@@ -4,6 +4,7 @@ public abstract class Unit {
 	private String job;
 	private int hp;
 	private int max_hp;
+	private int power;
 	private boolean isShieldOn;
 	private boolean isBuffOn;
 	private boolean isDebuffOn;
@@ -15,6 +16,14 @@ public abstract class Unit {
 	public String getJob() {
 		return job;
 	}
+	
+	public int getPower() {
+		return power;
+	}
+	public void setPower(int power) {
+		this.power = power;
+	}
+	
 
 	public int getHp() {
 		return hp;
@@ -56,5 +65,24 @@ public abstract class Unit {
 		this.isDebuffOn = isDebuffOn;
 	}
 	
-	public abstract void attack(Unit unit);
+	public void attack(Unit unit) {
+		int damage = this.power;
+		if (unit.isShieldOn) {
+			unit.setShieldOn(false);
+			System.out.println(unit.getJob() + "은 쉴드효과로 인하여 데미지를 받지 않았습니다.");
+			return;
+		}
+		
+		if (isBuffOn) {
+			damage *= 2;
+			setBuffOn(false);
+		}
+		
+		if (unit.isDebuffOn) {
+			damage *= 2;
+		}
+		
+		unit.setHp(unit.getHp() - damage);
+		System.out.printf("[%s]는 [%s]에게 %d의 데미지를 입혔다.",this.job,unit.getJob(),damage);
+	};
 }
