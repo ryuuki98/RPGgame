@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-import guild.GuildManager;
 import rpggame.Game;
 import rpggame.User;
 import rpggame.UserManager;
