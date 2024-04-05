@@ -2,6 +2,7 @@ package stage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import guild.GuildManager;
@@ -65,15 +66,37 @@ public class Normal extends Battle{
 	}
 	
 	private void printItemList(Player player) {
-		ArrayList<String> itemList = new ArrayList<String>();
-		for(Item item : player.getItems()) {
-//			String item = 
-//			itemList.add("")
-		}
+//		ArrayList<Item> items = player.getItems();
+//		ArrayList<String> itemNames = new ArrayList<>();
+//		ArrayList<Integer> itemCounts = new ArrayList<>();
+//		for(int i = 0; i<items.size(); i++) {
+//			Item item = items.get(i);
+//			String itemName = item.getName();
+//			int idx = -1;
+//			for(int j = 0; j<itemNames.size(); j++) {
+//				if(itemName.equals(itemNames.get(j))) {
+//					idx = j;
+//				}
+//			}
+//			if(idx != -1) {
+//				int count = itemCounts.get(idx);
+//				itemCounts.set(idx, count+1);
+//			}else {
+//				itemNames.add(itemName);
+//				itemCounts.add(1);
+//			}
+//		}
+//		
+//		for(int i = 0; i<itemNames.size(); i++) {
+//			String itemName = itemNames.get(i);
+//			int itemCount = itemCounts.get(i);
+//			System.out.printf("[%d] %s X %d\n", i, itemName, itemCount);
+//		}
 	}
 	
 	private void runUseItem(Player player) {
 		printItemList(player);
+		
 	}
 	
 	private void playerAttack(int idx) {
