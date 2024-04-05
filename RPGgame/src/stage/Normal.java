@@ -63,8 +63,25 @@ public class Normal extends Battle{
 		}
 	}
 	
-	private void playerAttack(int idx) {
+	private void runUseItem() {
 		
+	}
+	
+	private void playerAttack(int idx) {
+		Player player = players.get(idx);
+		while(true) {
+			System.out.println("[1]어택 [2]스킬 [3]아이템사용");
+			int select = inputNumber();
+			if(select == 3) {
+				runUseItem();
+				continue;
+			}else if(select == 1) {
+				
+			}else if(select == 2) {
+				
+			}
+			break;
+		}
 	}
 	
 	private void monsterAttack(int index) {

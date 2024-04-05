@@ -1,10 +1,12 @@
 package unit;
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
+
+import item.Item;
 
 public abstract class Player extends Unit{
 	
-//	ArrayList<Item> items;
+	ArrayList<Item> items;
 	
 	public Player(String job, int hp, int power) {
 		super(job);
@@ -15,4 +17,5 @@ public abstract class Player extends Unit{
 	
 	abstract public void Skill(Unit unit);
 
+	
 }
