@@ -46,11 +46,57 @@ public class Normal extends Battle{
 			players.add(loguser.getPlayer());
 		}
 	}
+	
+	private void printInfo() {
+		System.out.println("======[PLAYER]======");
+		for(Player player : players) {
+			
+		}
+		System.out.println("======[MONSTER]=====");
+		for(Monster monster : monsters) {
+			
+		}
+	}
+	
+	private boolean isGameOver() {
+		int cnt = 0;
+		for(Player player : players) {
+			if(player.getHp() <= 0) {
+				cnt++;
+			}
+			if(cnt == players.size()) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean isGameClear() {
+		int cnt = 0;
+		for(Monster monster : monsters) {
+			if(monster.getHp() <= 0) {
+				cnt++;
+			}
+			if(cnt == monsters.size()) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public boolean update() {
-		
-		return false;
+		while(true) {
+			
+			if(isGameOver()) {
+				// 길드원이 모두 죽으면 false
+				return false;
+			}
+			if(isGameClear()) {
+				// 몬스터가 모두 죽으면 true
+				return true;		
+			}
+		}
 	}
 
 }
