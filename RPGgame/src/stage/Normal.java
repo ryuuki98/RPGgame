@@ -24,6 +24,7 @@ public class Normal extends Battle{
 		monsters = null;
 		monsters = monsterManager.monsters;
 		// 여기서 길드원들 데려와야하는데....
+		
 	}
 
 	@Override
