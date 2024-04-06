@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import guild.GuildManager;
+import item.Shop;
+import shop.ShopManager;
 import stage.StageManager;
 
 public class Game {
@@ -19,6 +21,7 @@ public class Game {
 	private Scanner scanner;
 	private UserManager userManager;
 	private GuildManager guildManager;
+	private ShopManager shopManager;
 	
 	private ArrayList<StageManager> stages;
 	
@@ -27,6 +30,7 @@ public class Game {
 	private static int log;
 	
 	public Game() {
+		shopManager = new ShopManager();
 		userManager = UserManager.getUserManager();
 		guildManager = new GuildManager(userManager);
 		isRun = true;
@@ -74,7 +78,7 @@ public class Game {
 		}else if(select == GUILD) {
 			guildManager.run();
 		}else if(select == SHOP) {
-			
+			shopManager.run();
 		}
 	}
 	
