@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import guild.GuildManager;
+import item.Shop;
+import shop.ShopManager;
 import stage.StageManager;
 
 public class Game {
@@ -19,6 +21,7 @@ public class Game {
 	private Scanner scanner;
 	private UserManager userManager;
 	private GuildManager guildManager;
+	private ShopManager shopManager;
 	
 	private ArrayList<StageManager> stages;
 	
@@ -27,6 +30,7 @@ public class Game {
 	private static int log;
 	
 	public Game() {
+		shopManager = new ShopManager();
 		userManager = UserManager.getUserManager();
 		guildManager = new GuildManager(userManager);
 		isRun = true;
@@ -74,12 +78,16 @@ public class Game {
 		}else if(select == GUILD) {
 			guildManager.run();
 		}else if(select == SHOP) {
-			
+			shopManager.run();
 		}
 	}
 	
 	private void printSubMenu() {
 		System.out.println(title);
+		System.out.println("=====유저목록=====");
+		for (int i = 0; i < userManager.getUsers().size(); i++) {
+			System.out.println(userManager.getUsers().get(i));
+		}
 		System.out.println("현재 로그인 : " + userManager.getUsers().get(log).getId());
 		System.out.println("[1]배틀 [2]길드 [3]상점 [4]로그아웃");
 	}

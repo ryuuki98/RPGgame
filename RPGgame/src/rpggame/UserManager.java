@@ -18,23 +18,19 @@ public class UserManager {
 
 	private Scanner scanner = new Scanner(System.in);
 	
-	private ArrayList<User> users = new ArrayList<User>();
+	private ArrayList<User> users;
 ;
 	private String[] jobList = {"전사","법사","치료사"};
 	
 	private UserManager() {
-		
+		users = new ArrayList<User>();
 	}
 	
 	public static UserManager getUserManager() {
 		return userManager;
 	}
 	
-	private static UserManager instance = new UserManager();
 	
-	public static UserManager getInstance() {
-		return instance;
-	}
 	
 	public ArrayList<User> getUsers() {
 		return users;
