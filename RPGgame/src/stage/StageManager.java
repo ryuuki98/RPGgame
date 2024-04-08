@@ -18,7 +18,7 @@ public class StageManager {
 		while(true) {
 			Battle battle = new Normal(userManager, guildManager);
 			if(count < 10) {
-				System.out.printf("[%d 스테이지 입장]",count);
+				System.out.printf("[%d 스테이지 입장]\n",count);
 				battle.init();
 				if(!battle.update()) {
 					System.out.println("[레이드 실패]");

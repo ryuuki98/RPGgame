@@ -22,6 +22,7 @@ public class Game {
 	private UserManager userManager;
 	private GuildManager guildManager;
 	private ShopManager shopManager;
+	private StageManager stageManager;
 	
 	private ArrayList<StageManager> stages;
 	
@@ -56,7 +57,7 @@ public class Game {
 				int select = inputNumber("menu");
 				runMenu(select);
 				if(isLogin()) {
-//					Stage BattleStage = new Battle();
+					stageManager = new StageManager(userManager, guildManager);
 					// 로그인 할 때 배틀 스테이지 초기화
 				}
 			}else {
@@ -74,7 +75,7 @@ public class Game {
 	
 	private void runStage(int select) {
 		if(select == BATTLE) {
-			
+			stageManager.run();
 		}else if(select == GUILD) {
 			guildManager.run();
 		}else if(select == SHOP) {
