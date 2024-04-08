@@ -74,7 +74,7 @@ public class Normal extends Battle{
 		}
 	}
 	
-	private void printItemList(Player player) {
+	private void runUseItem(Player player) {
 		List keySet = new ArrayList(player.getItems().keySet());
 		int n = 1;
 		for(Object key : keySet) {
@@ -82,11 +82,7 @@ public class Normal extends Battle{
 				System.out.printf("%d) [%s] X%d",n++,key,player.getItems().get(key));
 			}
 		}
-	}
-	
-	private void runUseItem(Player player) {
-		printItemList(player);
-		
+		System.out.print("사용할 아이템 번호 : ");
 	}
 	
 	private void playerAttack(int idx) {
