@@ -11,10 +11,10 @@ public class StageManager {
 	public StageManager(UserManager userManager,GuildManager guildManager) {
 		this.userManager = userManager;
 		this.guildManager = guildManager;
-		count = 1;
 	}
 	
 	public void run() {
+		count = 1;		
 		while(true) {
 			Battle battle = new Normal(userManager, guildManager);
 			if(count < 10) {

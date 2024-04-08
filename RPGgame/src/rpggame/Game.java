@@ -52,9 +52,6 @@ public class Game {
 	}
 	
 	public void run() {
-//		Guild guildStage = new Guild();
-//		Shop shopStage = new Shop();
-		// 프로그램 시작할때 길드, 상점 생성
 		while (isRun) {
 			
 			if (!isLogin()) {
