@@ -8,9 +8,13 @@ import item.DebuffItem;
 import item.Item;
 import item.Potion;
 import item.Shield;
+import rpggame.Game;
+import rpggame.User;
+import rpggame.UserManager;
 
 public class ShopManager {
 	private ArrayList<Item> itemList;
+	private UserManager userManager = UserManager.getInstance();
 	private String title = "======SHOP======";
 	
 	private final int BUY_ITEM = 1;
@@ -70,6 +74,13 @@ public class ShopManager {
 	private void buyItem() {
 		System.out.println(title);
 		showItemList();
+		int select = inputNumber("구매하실 물품의 번호를 입력하세요");
+		addItemToPlayer();
+	}
+
+	private void addItemToPlayer() {
+		User user = userManager.getUsers().get(Game.getLog());
+		
 	}
 
 	private void showItemList() {
