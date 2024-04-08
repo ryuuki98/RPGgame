@@ -62,6 +62,10 @@ public class GuildManager {
 
 	// 길드 가입
 	private void joinGuildMenu() {
+		if (guildList.size() == 0) {
+			System.out.println("현재 길드가 존재하지 않습니다");
+			return;
+		}
 		// 현재 로그인한 유저
 		User user = users.get(log);
 		if (!user.getGuildName().equals("")) {
