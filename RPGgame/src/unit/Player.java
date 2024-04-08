@@ -25,7 +25,6 @@ public abstract class Player extends Unit{
 		items.put("요정의 축복", 0);
 		items.put("쇠약", 0);
 		items.put("쉴드", 0);
-		money = 100;
 	}
 	
 	public Map<String, Integer> getItems() {

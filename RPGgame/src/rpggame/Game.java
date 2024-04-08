@@ -22,6 +22,7 @@ public class Game {
 	private UserManager userManager;
 	private GuildManager guildManager;
 	private ShopManager shopManager;
+	private StageManager stageManager;
 	
 	private ArrayList<StageManager> stages;
 	
@@ -33,6 +34,7 @@ public class Game {
 		shopManager = new ShopManager();
 		userManager = UserManager.getUserManager();
 		guildManager = new GuildManager(userManager);
+		stageManager = new StageManager(userManager, guildManager);
 		isRun = true;
 		scanner = new Scanner(System.in);
 		stages = new ArrayList<>();
@@ -74,7 +76,7 @@ public class Game {
 	
 	private void runStage(int select) {
 		if(select == BATTLE) {
-			
+			stageManager.run();
 		}else if(select == GUILD) {
 			guildManager.run();
 		}else if(select == SHOP) {
