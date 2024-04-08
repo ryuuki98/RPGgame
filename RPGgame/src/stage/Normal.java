@@ -114,7 +114,16 @@ public class Normal extends Battle{
 		}
 	}
 	
-	private void playerAttack(int idx) {
+	private void runPlayerAttack(Player player) {
+		int monsterIdx = ran.nextInt(monsters.size());
+		Monster monster = monsters.get(monsterIdx);
+	}
+	
+	private void runPlayerSkill(Player player) {
+		
+	}
+	
+	private void playerTurn(int idx) {
 		Player player = players.get(idx);
 		while(true) {
 			System.out.println("[1]어택 [2]스킬 [3]아이템사용");
@@ -123,9 +132,9 @@ public class Normal extends Battle{
 				runUseItem(player);
 				continue;
 			}else if(select == 1) {
-				
+				runPlayerAttack(player);
 			}else if(select == 2) {
-				
+				runPlayerSkill(player);
 			}
 			break;
 		}
@@ -180,7 +189,7 @@ public class Normal extends Battle{
 			}
 			for(int i = 0; i<players.size(); i++) {
 				printInfo();
-				playerAttack(i);				
+				playerTurn(i);				
 				if(isStageClear()) {
 					return true;
 				}
