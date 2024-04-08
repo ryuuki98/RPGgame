@@ -22,7 +22,9 @@ public abstract class Monster extends Unit{
 		if (isDebuffOn()) {
 			damage /= 2;
 			System.out.println("디버프에 걸려 공격력이 2배 낮아집니다.");
-			this.setDebuffOn(false);
+			if(!this.getJob().equals("BOSS")) {
+				this.setDebuffOn(false);				
+			}
 		}
 		
 		unit.setHp(unit.getHp() - damage <= 0 ? 0 : unit.getHp() - damage);

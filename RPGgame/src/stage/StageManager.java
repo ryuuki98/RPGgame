@@ -27,7 +27,7 @@ public class StageManager {
 				System.out.printf("[%d 스테이지 클리어]\n",count++);
 			}else {
 				System.out.println("[보스 스테이지 입장]");
-				battle = new Boss();
+				battle = new Boss(userManager, guildManager);
 				battle.init();
 				if(!battle.update()) {
 					System.out.println("[레이드 실패]");

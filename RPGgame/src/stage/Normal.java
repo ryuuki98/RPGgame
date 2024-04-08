@@ -194,6 +194,10 @@ public class Normal extends Battle{
 				cnt++;
 			}
 			if(cnt == players.size()) {
+				for(int i = 0; i<players.size(); i++) {
+					Player target = players.get(i);
+					target.setHp(target.getMax_hp());
+				}
 				return true;
 			}
 		}
