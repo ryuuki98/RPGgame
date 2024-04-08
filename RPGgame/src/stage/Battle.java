@@ -17,7 +17,7 @@ public abstract class Battle {
 			} catch (Exception e) {
 				System.err.println("숫자를 입력하세요.");
 			}
-			if(number == 1||number == 2) {
+			if(number == 1||number == 2||number == 3) {
 				return number;
 			}else {
 				System.err.println("잘못된 메뉴");
