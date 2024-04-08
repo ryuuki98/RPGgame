@@ -134,22 +134,46 @@ public class Normal extends Battle{
 	
 	private void runPlayerSkill(Player player) {
 		if(player.getJob().equals("치료사")) {
-			while(true) {
-				int idx = ran.nextInt(players.size());
-				Player target = players.get(idx);
-				if(target.getHp() > 0) {
-					player.Skill(target);
-					break;
+			if(player.getMp() >= 20) {
+				while(true) {
+					int idx = ran.nextInt(players.size());
+					Player target = players.get(idx);
+					if(target.getHp() > 0) {
+						player.Skill(target);
+						break;
+					}
 				}
+				player.setMp(player.getMp()-20);
+			}else {
+				System.out.println("마나가 부족합니다.");
 			}
-		}else {
-			while(true) {
-				int idx = ran.nextInt(monsters.size());
-				Monster target = monsters.get(idx);
-				if(target.getHp() > 0) {
-					player.Skill(target);
-					break;
+		}else if(player.getJob().equals("전사")){
+			if(player.getMp() >= 40) {
+				while(true) {
+					int idx = ran.nextInt(monsters.size());
+					Monster target = monsters.get(idx);
+					if(target.getHp() > 0) {
+						player.Skill(target);
+						break;
+					}
 				}
+				player.setMp(player.getMp()-40);
+			}else {
+				System.out.println("마나가 부족합니다.");
+			}
+		}else if(player.getJob().equals("마법사")) {
+			if(player.getMp() >= 20) {
+				while(true) {
+					int idx = ran.nextInt(monsters.size());
+					Monster target = monsters.get(idx);
+					if(target.getHp() > 0) {
+						player.Skill(target);
+						break;
+					}
+				}
+				player.setMp(player.getMp()-20);
+			}else {
+				System.out.println("마나가 부족합니다.");
 			}
 		}
 	}
@@ -219,6 +243,7 @@ public class Normal extends Battle{
 
 	@Override
 	public boolean update() {
+		int turn = 0;
 		while(true) {
 			if(isGameOver()) {
 				return false;
@@ -226,7 +251,15 @@ public class Normal extends Battle{
 			for(int i = 0; i<players.size(); i++) {
 				if(players.get(i).getHp() > 0) {
 					printInfo();
-					playerTurn(i);									
+					playerTurn(i);
+					if(turn == 3) {
+						Player player = players.get(i);
+						int mp = player.getMp()+10;
+						if(mp > 100) {
+							mp = 100;
+						}
+						player.setMp(mp);
+					}
 				}
 				if(isStageClear()) {
 					for(int j = 0; j<players.size(); j++) {
@@ -247,6 +280,10 @@ public class Normal extends Battle{
 					return false;
 				}
 			}
+			if(turn == 3) {
+				turn = -1;
+			}
+			turn++;
 		}
 	}
 
