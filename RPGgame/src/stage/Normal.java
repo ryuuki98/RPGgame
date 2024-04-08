@@ -69,11 +69,11 @@ public class Normal extends Battle{
 	private void printInfo() {
 		System.out.println("======[PLAYER]======");
 		for(Player player : players) {
-			
+			player.printData();
 		}
 		System.out.println("======[MONSTER]=====");
 		for(Monster monster : monsters) {
-			
+			monster.printData();
 		}
 	}
 	
@@ -210,6 +210,9 @@ public class Normal extends Battle{
 			System.out.println("====!!Monster Attack!!====");
 			for(int i = 0; i<monsters.size(); i++) {
 				monsterAttack(i);
+				if(isGameOver()) {
+					return false;
+				}
 			}
 		}
 	}

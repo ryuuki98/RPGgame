@@ -66,5 +66,9 @@ public abstract class Unit {
 		this.isDebuffOn = isDebuffOn;
 	}
 	
+	public void printData() {
+		System.out.printf("[%s][%d/%d][%d]\n",this.job,this.hp,this.max_hp,this.power);
+	}
+	
 	public abstract void attack(Unit unit);
 }
