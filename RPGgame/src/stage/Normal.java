@@ -160,7 +160,7 @@ public class Normal extends Battle{
 		}
 		while(true) {
 			int idx = ran.nextInt(players.size());
-			Player player = players.get(index);
+			Player player = players.get(idx);
 			if(player.getHp() > 0) {
 				monster.attack(player);
 				break;

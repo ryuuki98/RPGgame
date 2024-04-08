@@ -26,6 +26,6 @@ public abstract class Monster extends Unit{
 		}
 		
 		unit.setHp(unit.getHp() - damage <= 0 ? 0 : unit.getHp() - damage);
-		System.out.printf("[%s]는 [%s]에게 %d의 데미지를 입혔다.",getJob(),unit.getJob(),damage);
+		System.out.printf("[%s]는 [%s]에게 %d의 데미지를 입혔다.\n",getJob(),unit.getJob(),damage);
 	}
 }
