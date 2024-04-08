@@ -11,6 +11,10 @@ public class MonsterManager {
 	
 	public ArrayList<Monster> monsters;
 	
+	public MonsterManager() {
+		monsters = new ArrayList<>();
+	}
+	
 	private void settingUnit(String[] unitName, int index) {
 		try {
 			Class<?> unitClass = Class.forName(packageName+unitName[index]);

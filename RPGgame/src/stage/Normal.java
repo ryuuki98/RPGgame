@@ -32,6 +32,7 @@ public class Normal extends Battle{
 		monsterManager = new MonsterManager();
 		this.userManager = userManager;
 		this.guildManager = guildManager;
+		itemList = new ArrayList<>();
 		itemList.add(new Potion());
 		itemList.add(new Shield());
 		itemList.add(new BuffItem());
@@ -52,6 +53,8 @@ public class Normal extends Battle{
 		User loguser = user.get(Game.getLog());
 		String key = loguser.getGuildName();
 		ArrayList<User> users = guildList.get(key);
+		players = new ArrayList<Player>();
+		
 		if(users!=null) {
 			// 길드 O
 			for(User guildUser : users) {
@@ -157,7 +160,7 @@ public class Normal extends Battle{
 		}
 		while(true) {
 			int idx = ran.nextInt(players.size());
-			Player player = players.get(index);
+			Player player = players.get(idx);
 			if(player.getHp() > 0) {
 				monster.attack(player);
 				break;

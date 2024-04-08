@@ -58,7 +58,7 @@ public class Game {
 				int select = inputNumber("menu");
 				runMenu(select);
 				if(isLogin()) {
-//					Stage BattleStage = new Battle();
+					stageManager = new StageManager(userManager, guildManager);
 					// 로그인 할 때 배틀 스테이지 초기화
 				}
 			}else {
