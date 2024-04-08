@@ -75,11 +75,11 @@ public class Normal extends Battle{
 	}
 	
 	private void printItemList(Player player) {
-		List keySet = new ArrayList(player.items.keySet());
+		List keySet = new ArrayList(player.getItems().keySet());
 		int n = 1;
 		for(Object key : keySet) {
-			if(player.items.get(key) > 0) {
-				System.out.printf("%d) [%s] X%d",n++,key,player.items.get(key));
+			if(player.getItems().get(key) > 0) {
+				System.out.printf("%d) [%s] X%d",n++,key,player.getItems().get(key));
 			}
 		}
 	}
