@@ -101,11 +101,16 @@ public class Normal extends Battle{
 			}
 		}
 		String itemName = useItemName(player);
+		boolean isItemUsed = false;
 		for(Item item : itemList) {
 			if(item.getName().equals(itemName)) {
 				item.used(player);
 				System.out.printf("[%s] 아이템이 사용되었습니다.\n",itemName);
+				isItemUsed = true;
 			}
+		}
+		if(!isItemUsed) {
+			System.err.println("사용할 수 없는 아이템 입니다.");
 		}
 	}
 	
