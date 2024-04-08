@@ -2,11 +2,15 @@ package stage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.Random;
 
 import guild.GuildManager;
+import item.BuffItem;
+import item.DebuffItem;
 import item.Item;
+import item.Potion;
+import item.Shield;
 import rpggame.Game;
 import rpggame.User;
 import rpggame.UserManager;
@@ -18,6 +22,7 @@ public class Normal extends Battle{
 	private Random ran = new Random();
 	private ArrayList<Monster> monsters;
 	private ArrayList<Player> players;
+	private ArrayList<Item> itemList;
 	private MonsterManager monsterManager;
 	private UserManager userManager;
 	private GuildManager guildManager;
@@ -27,6 +32,10 @@ public class Normal extends Battle{
 		monsterManager = new MonsterManager();
 		this.userManager = userManager;
 		this.guildManager = guildManager;
+		itemList.add(new Potion());
+		itemList.add(new Shield());
+		itemList.add(new BuffItem());
+		itemList.add(new DebuffItem());
 	}
 	
 	@Override
@@ -66,32 +75,13 @@ public class Normal extends Battle{
 	}
 	
 	private void printItemList(Player player) {
-//		ArrayList<Item> items = player.getItems();
-//		ArrayList<String> itemNames = new ArrayList<>();
-//		ArrayList<Integer> itemCounts = new ArrayList<>();
-//		for(int i = 0; i<items.size(); i++) {
-//			Item item = items.get(i);
-//			String itemName = item.getName();
-//			int idx = -1;
-//			for(int j = 0; j<itemNames.size(); j++) {
-//				if(itemName.equals(itemNames.get(j))) {
-//					idx = j;
-//				}
-//			}
-//			if(idx != -1) {
-//				int count = itemCounts.get(idx);
-//				itemCounts.set(idx, count+1);
-//			}else {
-//				itemNames.add(itemName);
-//				itemCounts.add(1);
-//			}
-//		}
-//		
-//		for(int i = 0; i<itemNames.size(); i++) {
-//			String itemName = itemNames.get(i);
-//			int itemCount = itemCounts.get(i);
-//			System.out.printf("[%d] %s X %d\n", i, itemName, itemCount);
-//		}
+		List keySet = new ArrayList(player.items.keySet());
+		int n = 1;
+		for(Object key : keySet) {
+			if(player.items.get(key) > 0) {
+				System.out.printf("%d) [%s] X%d",n++,key,player.items.get(key));
+			}
+		}
 	}
 	
 	private void runUseItem(Player player) {
