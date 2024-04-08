@@ -220,15 +220,25 @@ public class Normal extends Battle{
 				return false;
 			}
 			for(int i = 0; i<players.size(); i++) {
-				printInfo();
-				playerTurn(i);				
+				if(players.get(i).getHp() > 0) {
+					printInfo();
+					playerTurn(i);									
+				}
 				if(isStageClear()) {
+					for(int j = 0; j<players.size(); j++) {
+						Player player = players.get(j);
+						int money = player.getMoney()+(monsters.size()*100);
+						player.setMoney(money);
+					}
+					System.out.printf("+%d gold ",monsters.size()*100);
 					return true;
 				}
 			}
 			System.out.println("====!!Monster Attack!!====");
 			for(int i = 0; i<monsters.size(); i++) {
-				monsterAttack(i);
+				if(monsters.get(i).getHp() > 0) {
+					monsterAttack(i);					
+				}
 				if(isGameOver()) {
 					return false;
 				}
