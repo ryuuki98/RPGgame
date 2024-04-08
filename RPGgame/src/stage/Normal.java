@@ -97,10 +97,16 @@ public class Normal extends Battle{
 		int n = 1;
 		for(Object key : keySet) {
 			if(player.getItems().get(key) > 0) {
-				System.out.printf("%d) [%s] X%d",n++,key,player.getItems().get(key));
+				System.out.printf("%d) [%s] X%d\n",n++,key,player.getItems().get(key));
 			}
 		}
 		String itemName = useItemName(player);
+		for(Item item : itemList) {
+			if(item.getName().equals(itemName)) {
+				item.used(player);
+				System.out.printf("[%s] 아이템이 사용되었습니다.\n",itemName);
+			}
+		}
 	}
 	
 	private void playerAttack(int idx) {
