@@ -7,22 +7,25 @@ import guild.GuildManager;
 import item.Shop;
 import shop.ShopManager;
 import stage.StageManager;
+import storage.StorageManager;
 
 public class Game {
 	private final int JOIN = 1;
 	private final int LOGIN = 2;
 	private final int END_SYSTEM = 0;
-	private final int LOGOUT = 4;
+	private final int LOGOUT = 5;
 
 	private final int BATTLE = 1;
 	private final int GUILD = 2;
 	private final int SHOP = 3;
+	private final int STORAGE = 4;
 
 	private Scanner scanner;
 	private UserManager userManager;
 	private GuildManager guildManager;
 	private ShopManager shopManager;
 	private StageManager stageManager;
+	private StorageManager storageManager;
 	
 	private ArrayList<StageManager> stages;
 	
@@ -31,6 +34,7 @@ public class Game {
 	private static int log;
 	
 	public Game() {
+		storageManager = new StorageManager();
 		shopManager = new ShopManager();
 		userManager = UserManager.getUserManager();
 		guildManager = new GuildManager(userManager);
@@ -81,6 +85,12 @@ public class Game {
 			guildManager.run();
 		}else if(select == SHOP) {
 			shopManager.run();
+		}else if (select == STORAGE) {
+			if (userManager.getUsers().get(log).getGuildName().equals("")) {
+				System.out.println("해당 메뉴는 길드에 가입되어 있어야 이용 가능합니다.");
+				return;
+			}
+			storageManager.run();
 		}
 	}
 	
@@ -91,7 +101,7 @@ public class Game {
 			System.out.println(userManager.getUsers().get(i));
 		}
 		System.out.println("현재 로그인 : " + userManager.getUsers().get(log).getId());
-		System.out.println("[1]배틀 [2]길드 [3]상점 [4]로그아웃");
+		System.out.println("[1]배틀 [2]길드 [3]상점 [4]길드창고 [5]로그아웃");
 	}
 
 	private boolean isLogin() {

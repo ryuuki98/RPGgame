@@ -9,6 +9,8 @@ import rpggame.User;
 import rpggame.UserManager;
 
 public class GuildManager {
+	private final int MAX_GUILD_USER = 3;
+	
 	private final int CREATE_GUILD = 1;
 	private final int JOIN_GUILD = 2;
 	private final int LEAVE_GUILD = 3;
@@ -78,7 +80,7 @@ public class GuildManager {
 		System.out.println("가입할 수 있는 길드 목록:");
 		int index = 1;
 		for (String guildName : guildList.keySet()) {
-			System.out.println(index + ". " + guildName);
+			System.out.println(index + ". " + guildName + " 현재인원[" + guildList.get(guildName).size() + "/" + MAX_GUILD_USER + "]");
 			index++;
 		}
 
@@ -96,10 +98,15 @@ public class GuildManager {
 
 		// 입력받은 인덱스에 해당하는 길드 찾기
 		String guildName = getGuildNameByIndex(guildIndex);
+		
 
 		if (guildName != null) {
 			// 해당 길드에 유저를 추가
 			ArrayList<User> guildUsers = guildList.get(guildName);
+			if (guildUsers.size() == MAX_GUILD_USER) {
+				System.out.println("길드에 최대 인원이 수용되어 있습니다.");
+				return;
+			}
 			user.setGuildName(guildName);
 			guildUsers.add(user);
 			// 유저 정보에 길드명을 저장
