@@ -127,8 +127,14 @@ public class Normal extends Battle{
 	}
 	
 	private void runPlayerAttack(Player player) {
-		int monsterIdx = ran.nextInt(monsters.size());
-		Monster monster = monsters.get(monsterIdx);
+		Monster monster;
+		while (true) {
+			int monsterIdx = ran.nextInt(monsters.size());
+			monster = monsters.get(monsterIdx);
+			if (monster.getHp()>0) {
+				break;
+			}
+		}
 		player.attack(monster);
 	}
 	
