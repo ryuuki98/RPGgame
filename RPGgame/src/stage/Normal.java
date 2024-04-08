@@ -133,12 +133,31 @@ public class Normal extends Battle{
 	}
 	
 	private void runPlayerSkill(Player player) {
-		
+		if(player.getJob().equals("치료사")) {
+			while(true) {
+				int idx = ran.nextInt(players.size());
+				Player target = players.get(idx);
+				if(target.getHp() > 0) {
+					player.Skill(target);
+					break;
+				}
+			}
+		}else {
+			while(true) {
+				int idx = ran.nextInt(monsters.size());
+				Monster target = monsters.get(idx);
+				if(target.getHp() > 0) {
+					player.Skill(target);
+					break;
+				}
+			}
+		}
 	}
 	
 	private void playerTurn(int idx) {
 		Player player = players.get(idx);
 		while(true) {
+			System.out.println("["+player.getJob()+"]");
 			System.out.println("[1]어택 [2]스킬 [3]아이템사용");
 			int select = inputNumber();
 			if(select == 3) {
