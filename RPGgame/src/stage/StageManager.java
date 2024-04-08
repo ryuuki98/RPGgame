@@ -24,7 +24,7 @@ public class StageManager {
 					System.out.println("[레이드 실패]");
 					break;
 				}
-				System.out.printf("[%d 스테이지 클리어]\n",count);
+				System.out.printf("[%d 스테이지 클리어]\n",count++);
 			}else {
 				System.out.println("[보스 스테이지 입장]");
 				battle = new Boss();
@@ -36,7 +36,6 @@ public class StageManager {
 				System.out.println("[레이드 성공]");
 				break;
 			}
-			count++;
 		}
 	}
 }
