@@ -5,6 +5,8 @@ public abstract class Unit {
 	private int hp;
 	private int max_hp;
 	private int power;
+	private int max_mp;
+	private int mp;
 	private int defense;
 	private boolean isShieldOn;
 	private boolean isBuffOn;
@@ -66,8 +68,27 @@ public abstract class Unit {
 		this.isDebuffOn = isDebuffOn;
 	}
 	
+	public int getMp() {
+		return mp;
+	}
+	public void setMp(int mp) {
+		this.mp = mp;
+	}
+	
+	public int getMax_mp() {
+		return max_mp;
+	}
+	
+	public void setMax_mp(int max_mp) {
+		this.max_mp = max_mp;
+	}
+
+
 	public void printData() {
-		System.out.printf("[%s][%d/%d][%d]\n",this.job,this.hp,this.max_hp,this.power);
+		System.out.printf("[%s]HP[%d/%d][%d]\n",this.job,this.hp,this.max_hp,this.power);
+		if (this.max_mp != 0) {
+			System.out.printf("    MP[%d/%d]\n",this.mp,this.max_mp);			
+		}
 	}
 	
 	public abstract void attack(Unit unit);
