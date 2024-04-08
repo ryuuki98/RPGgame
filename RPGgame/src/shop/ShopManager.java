@@ -114,7 +114,6 @@ public class ShopManager {
 	private void printShopMenu() {
 		System.out.println(title);
 		System.out.println("[1.물건 구매]");
-		System.out.println("[2.물건 판매]");
 		System.out.println("[0.종료]");
 	}
 
