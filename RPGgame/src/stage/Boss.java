@@ -199,6 +199,9 @@ public class Boss extends Battle{
 						player.setHp(player.getMax_hp());
 						player.setPower(player.getPower()+10);
 					}
+					System.out.println("+1000 gold");
+					System.out.println("최대체력 +100");
+					System.out.println("공격력 + 10");
 					return true;
 				}
 			}
