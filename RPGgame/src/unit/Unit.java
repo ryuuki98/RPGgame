@@ -66,27 +66,5 @@ public abstract class Unit {
 		this.isDebuffOn = isDebuffOn;
 	}
 	
-	public void attack(Unit unit) {
-		int damage = this.power;
-		if (unit.isShieldOn) {
-			unit.setShieldOn(false);
-			System.out.println(unit.getJob() + "은 쉴드효과로 인하여 데미지를 받지 않았습니다.");
-			return;
-		}
-		
-		
-		//버프가 켜져있다면 주는 데미지 2배 , 한턴 사용후 버프 꺼짐
-		if (isBuffOn) {
-			damage *= 2;
-			setBuffOn(false);
-		}
-		
-		//타겟 유닛이 디버프 상태라면 받는 데미지 2배 , 턴이 지나도 꺼지지 않음
-		if (unit.isDebuffOn) {
-			damage *= 2;
-		}
-		
-		unit.setHp(unit.getHp() - damage);
-		System.out.printf("[%s]는 [%s]에게 %d의 데미지를 입혔다.",this.job,unit.getJob(),damage);
-	};
+	public abstract void attack(Unit unit);
 }

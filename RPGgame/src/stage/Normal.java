@@ -97,15 +97,24 @@ public class Normal extends Battle{
 		int n = 1;
 		for(Object key : keySet) {
 			if(player.getItems().get(key) > 0) {
-				System.out.printf("%d) [%s] X%d\n",n++,key,player.getItems().get(key));
+				System.out.printf("[%d] %s X%d\n",n++,key,player.getItems().get(key));
 			}
 		}
 		String itemName = useItemName(player);
 		boolean isItemUsed = false;
 		for(Item item : itemList) {
 			if(item.getName().equals(itemName)) {
-				item.used(player);
-				System.out.printf("[%s] 아이템이 사용되었습니다.\n",itemName);
+				if(itemName.equals("쇠약")) {
+					int monsterIdx = ran.nextInt(monsters.size());
+					Monster monster = monsters.get(monsterIdx);
+					System.out.printf("[%s] 아이템을 [%s]에게 사용하였습니다.\n",itemName, monster.getJob());
+					item.used(monster);
+				}else {
+					item.used(player);
+					System.out.printf("[%s] 아이템이 사용되었습니다.\n",itemName);
+				}
+				int count = player.getItems().get(itemName)-1;
+				player.getItems().put(itemName, count);
 				isItemUsed = true;
 			}
 		}
@@ -117,6 +126,7 @@ public class Normal extends Battle{
 	private void runPlayerAttack(Player player) {
 		int monsterIdx = ran.nextInt(monsters.size());
 		Monster monster = monsters.get(monsterIdx);
+		player.attack(monster);
 	}
 	
 	private void runPlayerSkill(Player player) {

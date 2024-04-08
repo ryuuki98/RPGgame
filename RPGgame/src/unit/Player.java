@@ -32,6 +32,21 @@ public abstract class Player extends Unit{
 		return items;
 	};
 	
+	@Override
+	public void attack(Unit unit) {
+		int damage = getPower();
+		
+		//버프가 켜져있다면 주는 데미지 2배 , 한턴 사용후 버프 꺼짐
+		if (isBuffOn()) {
+			damage *= 2;
+			System.out.println("버프 사용으로 공격력이 두배가 됩니다.");
+			setBuffOn(false);
+		}
+		
+		unit.setHp(unit.getHp() - damage <= 0 ? 0 : unit.getHp() - damage);
+		System.out.printf("[%s]는 [%s]에게 %d의 데미지를 입혔다.",getJob(),unit.getJob(),damage);
+	}
+	
 	abstract public void Skill(Unit unit);
 	
 }
