@@ -29,6 +29,7 @@ public class Game {
 	private FileManager fileManager;
 	
 	private boolean isRun;
+	private boolean isUpdate;
 	private final String title = "======RPG GAME======";
 	private static int log;
 	
@@ -43,6 +44,7 @@ public class Game {
 		scanner = new Scanner(System.in);
 		log = -1;
 		fileManager.load();
+		isUpdate = false;
 	}
 	public static void setLog(int log) {
 		Game.log = log;
@@ -55,7 +57,10 @@ public class Game {
 	
 	public void run() {
 		while (isRun) {
-			
+			if(isUpdate) {
+				fileManager.save();
+				isUpdate = false;
+			}
 			if (!isLogin()) {
 				printMenu();
 				int select = inputNumber("menu");
@@ -65,7 +70,6 @@ public class Game {
 					// 로그인 할 때 배틀 스테이지 초기화
 				}
 			}else {
-				fileManager.save();
 				printSubMenu();
 				int select = inputNumber("menu");
 				if(select == LOGOUT) {
@@ -82,16 +86,20 @@ public class Game {
 	private void runStage(int select) {
 		if(select == BATTLE) {
 			stageManager.run();
+			isUpdate = true;
 		}else if(select == GUILD) {
 			guildManager.run();
+			isUpdate = true;
 		}else if(select == SHOP) {
 			shopManager.run();
+			isUpdate = true;
 		}else if (select == STORAGE) {
 			if (userManager.getUsers().get(log).getGuildName().equals("")) {
 				System.out.println("해당 메뉴는 길드에 가입되어 있어야 이용 가능합니다.");
 				return;
 			}
 			storageManager.run();
+			isUpdate = true;
 		}
 	}
 	
@@ -107,9 +115,11 @@ public class Game {
 	private void runMenu(int select) {
 		if (select == JOIN) {
 			userManager.join();
+			isUpdate = true;
 		}else if (select == LOGIN) {
 			userManager.login();
 		}else if (select == END_SYSTEM) {
+			fileManager.save();
 			isRun = false;
 		}
 	}
