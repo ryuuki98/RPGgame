@@ -36,7 +36,7 @@ public class Game {
 	
 	public Game() {
 		fileManager = new FileManager();
-		storageManager = new StorageManager();
+		storageManager = StorageManager.getStorageManager();
 		shopManager = new ShopManager();
 		userManager = UserManager.getUserManager();
 		guildManager = new GuildManager(userManager);
@@ -52,6 +52,8 @@ public class Game {
 	public static int getLog() {
 		return log;
 	}
+	
+	
 	
 	public void run() {
 		while (isRun) {

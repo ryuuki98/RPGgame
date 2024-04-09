@@ -14,10 +14,15 @@ public class StorageManager {
 	private String title = "======STORAGE======";
 	private HashMap<String, Integer> storage;
 	private UserManager userManager = UserManager.getUserManager();
+	private static StorageManager storageManager = new StorageManager();
 	private boolean isRun = true;
 
-	public StorageManager() {
+	private StorageManager() {
 		storage = new HashMap<String, Integer>();
+	}
+	
+	public static StorageManager getStorageManager() {
+		return storageManager;
 	}
 
 	public void run() {
