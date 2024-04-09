@@ -42,6 +42,7 @@ public class Game {
 		isRun = true;
 		scanner = new Scanner(System.in);
 		log = -1;
+		fileManager.load();
 	}
 	public static void setLog(int log) {
 		Game.log = log;
