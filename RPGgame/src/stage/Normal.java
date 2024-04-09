@@ -191,7 +191,7 @@ public class Normal extends Battle {
 			}
 		}
 		
-		return true;
+		return false;
 	}
 
 	private void playerTurn(int idx) {

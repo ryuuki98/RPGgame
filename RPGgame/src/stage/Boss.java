@@ -114,7 +114,7 @@ public class Boss extends Battle{
 		}
 	}
 	
-	private void runPlayerSkill(Player player) {
+	private boolean runPlayerSkill(Player player) {
 		if(player.getJob().equals("치료사")) {
 			if(player.getMp() >= 20) {
 				while(true) {
@@ -126,24 +126,31 @@ public class Boss extends Battle{
 					}
 				}
 				player.setMp(player.getMp()-20);
+				return true;
 			}else {
 				System.out.println("마나가 부족합니다.");
+				return false;
 			}
 		} else if(player.getJob().equals("전사")) {
 			if(player.getMp() >= 40) {
 				player.Skill(boss);
 				player.setMp(player.getMp()-40);
+				return true;
 			}else {
 				System.out.println("마나가 부족합니다.");
+				return false;
 			}
 		} else if(player.getJob().equals("치료사")) {
 			if(player.getMp() >= 20) {
 				player.Skill(boss);		
 				player.setMp(player.getMp()-20);
+				return true;
 			}else {
 				System.out.println("마나가 부족합니다.");
+				return false;
 			}
 		}
+		return false;
 	}
 	
 	private void playerTurn(int idx) {
@@ -158,7 +165,9 @@ public class Boss extends Battle{
 			}else if(select == 1) {
 				player.attack(boss);
 			}else if(select == 2) {
-				runPlayerSkill(player);
+				if(!runPlayerSkill(player)) {
+					continue;
+				}
 			}
 			break;
 		}
@@ -186,6 +195,7 @@ public class Boss extends Battle{
 				for(int i = 0; i<players.size(); i++) {
 					Player target = players.get(i);
 					target.setHp(target.getMax_hp());
+					target.setMp(target.getMax_hp());
 				}
 				return true;
 			}
@@ -221,10 +231,13 @@ public class Boss extends Battle{
 						player.setMax_hp(player.getMax_hp()+100);
 						player.setHp(player.getMax_hp());
 						player.setPower(player.getPower()+10);
+						player.setMax_mp(player.getMax_mp()+10);
+						player.setMp(player.getMax_mp());
 					}
 					System.out.println("+1000 gold");
 					System.out.println("최대체력 +100");
 					System.out.println("공격력 + 10");
+					System.out.println("최대mp + 10");
 					return true;
 				}
 			}

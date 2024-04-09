@@ -7,11 +7,8 @@ public abstract class Player extends Unit{
 	
 	private Map<String, Integer> items = new HashMap<String,Integer>();
 	private int money;
-<<<<<<< HEAD
 	private int mp;
 	private int max_mp;
-=======
->>>>>>> refs/heads/develop
 	
 	public int getMoney() {
 		return money;
