@@ -47,8 +47,7 @@ public class FileManager {
 	}
 
 	private void saveGuildInfo() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	private void saveUserInfo() {
