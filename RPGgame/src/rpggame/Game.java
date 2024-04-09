@@ -26,6 +26,7 @@ public class Game {
 	private ShopManager shopManager;
 	private StageManager stageManager;
 	private StorageManager storageManager;
+	private FileManager fileManager;
 	
 	private ArrayList<StageManager> stages;
 	
@@ -34,6 +35,7 @@ public class Game {
 	private static int log;
 	
 	public Game() {
+		fileManager = new FileManager();
 		storageManager = new StorageManager();
 		shopManager = new ShopManager();
 		userManager = UserManager.getUserManager();
