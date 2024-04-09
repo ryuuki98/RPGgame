@@ -64,6 +64,7 @@ public class Game {
 					// 로그인 할 때 배틀 스테이지 초기화
 				}
 			}else {
+				fileManager.save();
 				printSubMenu();
 				int select = inputNumber("menu");
 				if(select == LOGOUT) {
@@ -71,6 +72,7 @@ public class Game {
 				}else {
 					runStage(select);
 				}
+				
 			}
 		}
 	}
