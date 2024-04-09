@@ -106,6 +106,7 @@ public abstract class Unit {
 	        System.out.println("             " + hp + "/" + max_hp);
 	    }
 	}
+	
 //	
 //	public void printData() {
 //	    System.out.printf("\033[31m[%s]\033[0m HP[%d/%d] [%d]\n", this.job, this.hp, this.max_hp, this.power);
