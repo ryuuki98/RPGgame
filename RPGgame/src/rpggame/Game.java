@@ -39,7 +39,7 @@ public class Game {
 		storageManager = StorageManager.getStorageManager();
 		shopManager = new ShopManager();
 		userManager = UserManager.getUserManager();
-		guildManager = new GuildManager(userManager);
+		guildManager = GuildManager.getGuildManager();
 		stageManager = new StageManager(userManager, guildManager);
 		isRun = true;
 		scanner = new Scanner(System.in);
