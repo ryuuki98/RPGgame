@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import guild.GuildManager;
 import storage.StorageManager;
@@ -47,7 +48,34 @@ public class FileManager {
 	}
 
 	private void saveGuildInfo() {
-		
+		File file = new File("guild.txt");
+		String data = "";
+		try {
+			fileWriter = new FileWriter(file);
+			Set<String> keySet = guildList.keySet();
+			for(String guildName : keySet) {
+				data += guildName + "/";
+				for (int i = 0; i < users.size(); i++) {
+					User user = users.get(i);
+					if (user.getGuildName().equals(guildName)) {
+						if (i != 0) {
+							data +=",";
+						}
+						data += user.getId();
+					}
+				}
+				data +=  "/" + storage.get(guildName) + "\n";
+				
+			}
+			
+			fileWriter.write(data);
+			fileWriter.close();
+			System.out.println("저장 완료");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("저장 실패");
+		}
 	}
 
 	private void saveUserInfo() {
