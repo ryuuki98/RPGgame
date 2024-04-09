@@ -18,7 +18,7 @@ import unit.Monster;
 import unit.MonsterManager;
 import unit.Player;
 
-public class Normal extends Battle{
+public class Normal extends Battle {
 	private Random ran = new Random();
 	private ArrayList<Monster> monsters;
 	private ArrayList<Player> players;
@@ -26,7 +26,7 @@ public class Normal extends Battle{
 	private MonsterManager monsterManager;
 	private UserManager userManager;
 	private GuildManager guildManager;
-	
+
 	public Normal(UserManager userManager, GuildManager guildManager) {
 		monsters = null;
 		monsterManager = new MonsterManager();
@@ -38,12 +38,12 @@ public class Normal extends Battle{
 		itemList.add(new BuffItem());
 		itemList.add(new DebuffItem());
 	}
-	
+
 	@Override
 	public void init() {
 		// 일반 몬스터 생성
 		monsterManager.monsters.clear();
-		monsterManager.settingMonster(ran.nextInt(3)+2);
+		monsterManager.settingMonster(ran.nextInt(3) + 2);
 		monsters = null;
 		monsters = monsterManager.monsters;
 		// 여기서 길드원들 데려와야하는데....
@@ -54,38 +54,38 @@ public class Normal extends Battle{
 		String key = loguser.getGuildName();
 		ArrayList<User> users = guildList.get(key);
 		players = new ArrayList<Player>();
-		
-		if(users!=null) {
+
+		if (users != null) {
 			// 길드 O
-			for(User guildUser : users) {
+			for (User guildUser : users) {
 				players.add(guildUser.getPlayer());
-			}			
-		}else {
+			}
+		} else {
 			// 솔플
 			players.add(loguser.getPlayer());
 		}
 	}
-	
+
 	private void printInfo() {
 		System.out.println("======[PLAYER]======");
-		for(Player player : players) {
+		for (Player player : players) {
 			player.printData();
 		}
 		System.out.println("======[MONSTER]=====");
-		for(Monster monster : monsters) {
+		for (Monster monster : monsters) {
 			monster.printData();
 		}
 	}
-	
+
 	private String useItemName(Player player) {
 		String itemName = "";
 		List keySet = new ArrayList(player.getItems().keySet());
 		System.out.print("사용할 아이템 번호");
 		int number = inputNumber();
 		int n = 1;
-		for(Object key : keySet) {
-			if(player.getItems().get(key) > 0) {
-				if(n == number) {
+		for (Object key : keySet) {
+			if (player.getItems().get(key) > 0) {
+				if (n == number) {
 					itemName = (String) key;
 					break;
 				}
@@ -94,131 +94,150 @@ public class Normal extends Battle{
 		}
 		return itemName;
 	}
-	
+
 	private void runUseItem(Player player) {
 		List keySet = new ArrayList(player.getItems().keySet());
 		int n = 1;
-		for(Object key : keySet) {
-			if(player.getItems().get(key) > 0) {
-				System.out.printf("[%d] %s X%d\n",n++,key,player.getItems().get(key));
+		for (Object key : keySet) {
+			if (player.getItems().get(key) > 0) {
+				System.out.printf("[%d] %s X%d\n", n++, key, player.getItems().get(key));
 			}
 		}
 		String itemName = useItemName(player);
 		boolean isItemUsed = false;
-		for(Item item : itemList) {
-			if(item.getName().equals(itemName)) {
-				if(itemName.equals("쇠약")) {
+		for (Item item : itemList) {
+			if (item.getName().equals(itemName)) {
+				if (itemName.equals("쇠약")) {
 					int monsterIdx = ran.nextInt(monsters.size());
 					Monster monster = monsters.get(monsterIdx);
-					System.out.printf("[%s] 아이템을 [%s]에게 사용하였습니다.\n",itemName, monster.getJob());
+					System.out.printf("[%s] 아이템을 [%s]에게 사용하였습니다.\n", itemName, monster.getJob());
 					item.used(monster);
-				}else {
+				} else {
 					item.used(player);
-					System.out.printf("[%s] 아이템이 사용되었습니다.\n",itemName);
+					System.out.printf("[%s] 아이템이 사용되었습니다.\n", itemName);
 				}
-				int count = player.getItems().get(itemName)-1;
+				int count = player.getItems().get(itemName) - 1;
 				player.getItems().put(itemName, count);
 				isItemUsed = true;
 			}
 		}
-		if(!isItemUsed) {
+		if (!isItemUsed) {
 			System.err.println("사용할 수 없는 아이템 입니다.");
 		}
 	}
-	
+
 	private void runPlayerAttack(Player player) {
-		int monsterIdx = ran.nextInt(monsters.size());
-		Monster monster = monsters.get(monsterIdx);
-		player.attack(monster);
-	}
-	
-	private void runPlayerSkill(Player player) {
-		if(player.getJob().equals("치료사")) {
-			if(player.getMp() >= 20) {
-				while(true) {
-					int idx = ran.nextInt(players.size());
-					Player target = players.get(idx);
-					if(target.getHp() > 0) {
-						player.Skill(target);
-						break;
-					}
-				}
-				player.setMp(player.getMp()-20);
-			}else {
-				System.out.println("마나가 부족합니다.");
-			}
-		}else if(player.getJob().equals("전사")){
-			if(player.getMp() >= 40) {
-				while(true) {
-					int idx = ran.nextInt(monsters.size());
-					Monster target = monsters.get(idx);
-					if(target.getHp() > 0) {
-						player.Skill(target);
-						break;
-					}
-				}
-				player.setMp(player.getMp()-40);
-			}else {
-				System.out.println("마나가 부족합니다.");
-			}
-		}else if(player.getJob().equals("마법사")) {
-			if(player.getMp() >= 20) {
-				while(true) {
-					int idx = ran.nextInt(monsters.size());
-					Monster target = monsters.get(idx);
-					if(target.getHp() > 0) {
-						player.Skill(target);
-						break;
-					}
-				}
-				player.setMp(player.getMp()-20);
-			}else {
-				System.out.println("마나가 부족합니다.");
+		Monster monster;
+		while (true) {
+			int monsterIdx = ran.nextInt(monsters.size());
+			monster = monsters.get(monsterIdx);
+			if (monster.getHp() > 0) {
+				break;
 			}
 		}
+		player.attack(monster);
 	}
-	
+
+	private boolean runPlayerSkill(Player player) {
+		if (player.getJob().equals("치료사")) {
+			if (player.getMp() >= 20) {
+				while (true) {
+					int idx = ran.nextInt(players.size());
+					Player target = players.get(idx);
+					if (target.getHp() > 0) {
+						player.Skill(target);
+						break;
+					}
+				}
+				player.setMp(player.getMp() - 20);
+				return true;
+
+			} else {
+				System.out.println("마나가 부족합니다.");
+				return false;
+			}
+		} else if (player.getJob().equals("전사")) {
+			if (player.getMp() >= 40) {
+				while (true) {
+					int idx = ran.nextInt(monsters.size());
+					Monster target = monsters.get(idx);
+					if (target.getHp() > 0) {
+						player.Skill(target);
+						break;
+					}
+				}
+				player.setMp(player.getMp() - 40);
+				return true;
+
+			} else {
+				System.out.println("마나가 부족합니다.");
+				return false;
+			}
+		} else if (player.getJob().equals("마법사")) {
+			if (player.getMp() >= 20) {
+				while (true) {
+					int idx = ran.nextInt(monsters.size());
+					Monster target = monsters.get(idx);
+					if (target.getHp() > 0) {
+						player.Skill(target);
+						break;
+					}
+				}
+				player.setMp(player.getMp() - 20);
+				return true;
+			} else {
+				System.out.println("마나가 부족합니다.");
+				return false;
+			}
+		}
+		
+		return true;
+	}
+
 	private void playerTurn(int idx) {
 		Player player = players.get(idx);
-		while(true) {
-			System.out.println("["+player.getJob()+"]");
+		while (true) {
+			printInfo();
+			System.out.println("[" + player.getJob() + "]");
 			System.out.println("[1]어택 [2]스킬 [3]아이템사용");
 			int select = inputNumber();
-			if(select == 3) {
+			if (select == 3) {
 				runUseItem(player);
 				continue;
-			}else if(select == 1) {
+			} else if (select == 1) {
 				runPlayerAttack(player);
-			}else if(select == 2) {
-				runPlayerSkill(player);
+			} else if (select == 2) {
+				if (!runPlayerSkill(player)) {
+					continue;
+				}
 			}
 			break;
 		}
 	}
-	
+
 	private void monsterAttack(int index) {
 		Monster monster = monsters.get(index);
-		if(monster.getHp() <= 0) {
+		if (monster.getHp() <= 0) {
 			return;
 		}
-		while(true) {
+		while (true) {
 			int idx = ran.nextInt(players.size());
 			Player player = players.get(idx);
-			if(player.getHp() > 0) {
+			if (player.getHp() > 0) {
 				monster.attack(player);
 				break;
 			}
 		}
 	}
-	
+
 	private boolean isGameOver() {
 		int cnt = 0;
-		for(Player player : players) {
-			if(player.getHp() <= 0) {
+		for (Player player : players) {
+			if (player.getHp() <= 0) {
 				cnt++;
 			}
-			if(cnt == players.size()) {
-				for(int i = 0; i<players.size(); i++) {
+			if (cnt == players.size()) {
+				for (int i = 0; i < players.size(); i++) {
 					Player target = players.get(i);
 					target.setHp(target.getMax_hp());
 					target.setMp(target.getMax_hp());
@@ -228,14 +247,14 @@ public class Normal extends Battle{
 		}
 		return false;
 	}
-	
+
 	private boolean isStageClear() {
 		int cnt = 0;
-		for(Monster monster : monsters) {
-			if(monster.getHp() <= 0) {
+		for (Monster monster : monsters) {
+			if (monster.getHp() <= 0) {
 				cnt++;
 			}
-			if(cnt == monsters.size()) {
+			if (cnt == monsters.size()) {
 				return true;
 			}
 		}
@@ -245,43 +264,42 @@ public class Normal extends Battle{
 	@Override
 	public boolean update() {
 		int turn = 0;
-		while(true) {
-			if(isGameOver()) {
+		while (true) {
+			if (isGameOver()) {
 				return false;
 			}
-			for(int i = 0; i<players.size(); i++) {
-				if(players.get(i).getHp() > 0) {
-					printInfo();
+			for (int i = 0; i < players.size(); i++) {
+				if (players.get(i).getHp() > 0) {
 					playerTurn(i);
-					if(turn == 3) {
+					if (turn == 3) {
 						Player player = players.get(i);
-						int mp = player.getMp()+10;
-						if(mp > 100) {
+						int mp = player.getMp() + 10;
+						if (mp > 100) {
 							mp = 100;
 						}
 						player.setMp(mp);
 					}
 				}
-				if(isStageClear()) {
-					for(int j = 0; j<players.size(); j++) {
+				if (isStageClear()) {
+					for (int j = 0; j < players.size(); j++) {
 						Player player = players.get(j);
-						int money = player.getMoney()+(monsters.size()*100);
+						int money = player.getMoney() + (monsters.size() * 100);
 						player.setMoney(money);
 					}
-					System.out.printf("+%d gold ",monsters.size()*100);
+					System.out.printf("+%d gold ", monsters.size() * 100);
 					return true;
 				}
 			}
 			System.out.println("====!!Monster Attack!!====");
-			for(int i = 0; i<monsters.size(); i++) {
-				if(monsters.get(i).getHp() > 0) {
-					monsterAttack(i);					
+			for (int i = 0; i < monsters.size(); i++) {
+				if (monsters.get(i).getHp() > 0) {
+					monsterAttack(i);
 				}
-				if(isGameOver()) {
+				if (isGameOver()) {
 					return false;
 				}
 			}
-			if(turn == 3) {
+			if (turn == 3) {
 				turn = -1;
 			}
 			turn++;
