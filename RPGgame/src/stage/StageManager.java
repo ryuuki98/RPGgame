@@ -14,7 +14,7 @@ public class StageManager {
 	}
 	
 	public void run() {
-		count = 1;		
+		count = 1;
 		while(true) {
 			Battle battle = new Normal(userManager, guildManager);
 			if(count < 10) {
