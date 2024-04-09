@@ -7,8 +7,6 @@ public abstract class Player extends Unit{
 	
 	private Map<String, Integer> items = new HashMap<String,Integer>();
 	private int money;
-	private int mp;
-	private int max_mp;
 	
 	public int getMoney() {
 		return money;
@@ -28,9 +26,7 @@ public abstract class Player extends Unit{
 		items.put("생명의 물약", 0);
 		items.put("요정의 축복", 0);
 		items.put("쇠약", 0);
-		items.put("쉴드", 0);;
-		this.mp = 100;
-		this.max_mp = 100;
+		items.put("쉴드", 0);
 	}
 	
 	public Map<String, Integer> getItems() {
@@ -53,16 +49,4 @@ public abstract class Player extends Unit{
 	}
 	
 	abstract public void Skill(Unit unit);
-	public int getMp() {
-		return mp;
-	}
-	public void setMp(int mp) {
-		this.mp = mp;
-	}
-	public int getMax_mp() {
-		return max_mp;
-	}
-	public void setMax_mp(int max_mp) {
-		this.max_mp = max_mp;
-	}
 }
