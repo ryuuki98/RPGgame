@@ -28,8 +28,6 @@ public class Game {
 	private StorageManager storageManager;
 	private FileManager fileManager;
 	
-	private ArrayList<StageManager> stages;
-	
 	private boolean isRun;
 	private final String title = "======RPG GAME======";
 	private static int log;
@@ -43,7 +41,6 @@ public class Game {
 		stageManager = new StageManager(userManager, guildManager);
 		isRun = true;
 		scanner = new Scanner(System.in);
-		stages = new ArrayList<>();
 		log = -1;
 	}
 	public static void setLog(int log) {

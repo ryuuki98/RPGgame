@@ -9,7 +9,6 @@ public abstract class Unit {
 	private int power;
 	private int max_mp;
 	private int mp;
-	private int defense;
 	private boolean isShieldOn;
 	private boolean isBuffOn;
 	private boolean isDebuffOn;
