@@ -131,24 +131,32 @@ public class FileManager {
 			Object obj = playerClass.getConstructor().newInstance();
 			if(obj instanceof Player) {
 				Player player = (Player) obj;
-				player.setMax_hp(Integer.parseInt(playerData[1]));
-				player.setHp(player.getMax_hp());
-				player.setPower(Integer.parseInt(playerData[2]));
-				player.setMoney(Integer.parseInt(playerData[3]));
-				player.setMax_mp(Integer.parseInt(playerData[4]));
-				player.setMp(player.getMp());
+				playerSetting(playerData, player);
 				Map<String, Integer> map = player.getItems();
-				map.clear();
-				map.put("생명의 물약", Integer.parseInt(itemData[0]));
-				map.put("쉴드", Integer.parseInt(itemData[1]));
-				map.put("요정의 축복", Integer.parseInt(itemData[2]));
-				map.put("쇠약", Integer.parseInt(itemData[3]));
+				itemSetting(itemData, map);
 				User user = new User(userData[0],userData[1],player);
 				users.add(user);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void itemSetting(String[] itemData, Map<String, Integer> map) {
+		map.clear();
+		map.put("생명의 물약", Integer.parseInt(itemData[0]));
+		map.put("쉴드", Integer.parseInt(itemData[1]));
+		map.put("요정의 축복", Integer.parseInt(itemData[2]));
+		map.put("쇠약", Integer.parseInt(itemData[3]));
+	}
+
+	private void playerSetting(String[] playerData, Player player) {
+		player.setMax_hp(Integer.parseInt(playerData[1]));
+		player.setHp(player.getMax_hp());
+		player.setPower(Integer.parseInt(playerData[2]));
+		player.setMoney(Integer.parseInt(playerData[3]));
+		player.setMax_mp(Integer.parseInt(playerData[4]));
+		player.setMp(player.getMp());
 	}
 	
 	private void parseLoadedUserData(String data) {
