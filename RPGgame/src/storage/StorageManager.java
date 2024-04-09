@@ -24,6 +24,10 @@ public class StorageManager {
 	public static StorageManager getStorageManager() {
 		return storageManager;
 	}
+	
+	public HashMap<String, Integer> getStorage() {
+		return storage;
+	}
 
 	public void run() {
 		printStorage();

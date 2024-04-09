@@ -14,13 +14,20 @@ public class GuildManager {
 	private final int CREATE_GUILD = 1;
 	private final int JOIN_GUILD = 2;
 	private final int LEAVE_GUILD = 3;
+	
+	private static GuildManager guildManager = new GuildManager();
+	
 	private HashMap<String, ArrayList<User>> guildList = new HashMap<String, ArrayList<User>>();
 	private ArrayList<User> users = UserManager.getUserManager().getUsers();
 	private int log = Game.getLog();
 	private String key;
 
-	public GuildManager(UserManager userManager) {
+	private GuildManager() {
 		key = "";
+	}
+	
+	public static GuildManager getGuildManager() {
+		return guildManager;
 	}
 
 	private void findMyGuild() {
